@@ -64,7 +64,7 @@ module.exports = {
         darkBg: "#18191D",
         darkBgUi3: "#383838",
         primary: {
-          DEFAULT: "#BB9B6A",
+          DEFAULT: "#0040ff",
           ui4OpacityBg: "#FE72004D",
           ui3OpacityBg: "#E34F260D",
           ui4PrimaryBoldBg: "#5C2F08",

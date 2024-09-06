@@ -158,19 +158,36 @@ const HomePage = async () => {
   const stories = await storyService.getAll({ lang });
   return (
     <>
-      <div className="bg-ui-1-bg bg-no-repeat bg-clip-content bg-cover mb-20">
+      <div className="overflow-hidden w-screen">
+        <div className="relative">
+          <div
+            aria-hidden="true"
+            className="absolute left-[calc(50%-36rem)] top-10 -z-10 transform-gpu blur-3xl sm:left-[calc(50%-18rem)] xl:left-[calc(50%-24rem)]"
+          >
+            <div
+              style={{
+                clipPath:
+                  "polygon(73.6% 51.7%, 91.7% 11.8%, 100% 46.4%, 97.4% 82.2%, 92.5% 84.9%, 75.7% 64%, 55.3% 47.5%, 46.5% 49.4%, 45% 62.9%, 50.3% 87.2%, 21.3% 64.1%, 0.1% 100%, 5.4% 51.1%, 21.4% 63.9%, 58.9% 0.2%, 73.6% 51.7%)",
+              }}
+              className="aspect-[1108/632] w-[69.25rem] bg-gradient-to-r from-[#0033FF] to-[#0033FF] opacity-20"
+            />
+          </div>
+        </div>
         <Header showLinks settings={parsedSettings} />
-        <section className="flex justify-center items-center flex-col lg:h-[60vh] px-4 md:px-8 lg:px-0">
-          <h1 className="md:text-6xl text-3xl font-semibold text-center my-10 max-h-max">
+        <section className="flex justify-center items-center flex-col my-32 px-4 md:px-8 lg:px-0">
+          <h1 className="md:text-[65px] text-3xl font-semibold text-center my-10">
             <Translate value="find.services" />
           </h1>
-          <SearchField />
+          <div className="z-[2] w-full lg:w-auto">
+            <SearchField />
+          </div>
         </section>
-      </div>
-      <main>
         <section>
           <Services data={services} />
         </section>
+      </div>
+
+      <main>
         <section>
           <Recommended data={recommendedShops} />
           <Masters />
@@ -211,14 +228,14 @@ const HomePage = async () => {
         <section className="xl:container px-4">
           <div className="grid md:grid-cols-2 gap-7 my-14">
             <MobileCard
-              img="/img/mobile-card-1.png"
+              img="/img/mobile-card-2.png"
               title="find.and.book.appointment"
-              description="mobile.card.description.1"
+              description="app.movile.client.description"
             />
             <MobileCard
-              img="/img/mobile-card-2.png"
+              img="/img/mobile-card-1.png"
               title="for.business"
-              description="mobile.card.description.2"
+              description="Gestiona tu negocio de belleza y barbería de manera fácil y rápida."
             />
           </div>
         </section>
