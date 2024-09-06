@@ -1,0 +1,380 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --coupon-bg: linear-gradient(#ffffff, #fbfbfb);
+  --coupon-footer: radial-gradient(circle, transparent, transparent 50%, #fbfbfb 50%, #fbfbfb 100%) -7px -2px /
+    16px 16px repeat-x;
+  --datepicker-bg: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.6012780112044818) 0%,
+    rgba(255, 255, 255, 0) 56%,
+    rgba(255, 255, 255, 0.5984768907563025) 100%
+  );
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.dark {
+  --coupon-bg: linear-gradient(#18191d, #888888);
+  --coupon-footer: radial-gradient(circle, transparent, transparent 50%, #888888 50%, #888888 100%) -7px -2px /
+    16px 16px repeat-x;
+  --datepicker-bg: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.6012780112044818) 0%,
+    rgba(110, 110, 110, 0.8029586834733894) 50%,
+    rgba(0, 0, 0, 0.5984768907563025) 100%
+  );
+}
+
+@layer components {
+  .focus-ring {
+    @apply focus-visible:ring-primary focus-visible:ring-2;
+  }
+
+  .swiper-button-next {
+    border-radius: 50%;
+    width: 46px !important;
+    height: 46px !important;
+    @apply bg-gray-float inline-flex items-center justify-center;
+  }
+
+  .swiper-button-prev {
+    transform: rotate(180deg);
+    border-radius: 50%;
+    height: 46px !important;
+    width: 46px !important;
+    @apply bg-gray-float inline-flex items-center justify-center;
+  }
+
+  .swiper-button-prev.swiper-button-disabled,
+  .swiper-button-next.swiper-button-disabled {
+    display: none;
+  }
+
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    display: none;
+  }
+
+  .product-modal .swiper-slide-thumb-active img {
+    @apply ring-1 ring-offset-1 ring-gray-500 p-[2px] outline-none;
+  }
+
+  .product-detail .swiper-slide img {
+    @apply brightness-75;
+  }
+
+  .product-detail .swiper-slide-thumb-active img {
+    @apply brightness-100;
+  }
+
+  .product-detail-3 .swiper-slide-thumb-active img {
+    @apply brightness-100;
+  }
+
+  .datepicker.ios .datepicker-wheel {
+    @apply !border-b !border-primary !border-t !border-primary;
+  }
+
+  .Toastify__toast {
+    @apply rounded-2xl bg-opacity-30;
+  }
+
+  .Toastify__toast-container {
+    width: min(400px, 100vw);
+  }
+
+  .Toastify__close-button > svg {
+    @apply !stroke-white;
+  }
+
+  .datepicker.ios .datepicker-scroll li {
+    @apply dark:text-amber-50;
+  }
+
+  .progress {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .progress::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    @apply bg-primary;
+    width: var(--progress);
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+.auth-body {
+  min-height: calc(100vh - 104px);
+  min-height: calc(100svh - 104px);
+  border-radius: 25px;
+}
+
+.overlay-bg {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+  transition: background 0.4s linear;
+  -webkit-transition: background 0.2s ease-in-out;
+}
+
+.overlay-bg:hover {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 100%);
+}
+
+.coupon {
+  position: relative;
+  box-sizing: border-box;
+  padding: 20px;
+  background: var(--coupon-bg);
+  margin-bottom: 30px;
+  filter: drop-shadow(0px 20px 5px rgba(0, 0, 0, 0.08));
+}
+
+.coupon::before,
+.coupon::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  height: 6px;
+  width: calc(100% - 10px);
+}
+
+.coupon::after {
+  bottom: -5px;
+  background: var(--coupon-footer);
+}
+
+.svg-pi-indicator--spinner {
+  animation: spinner 0.75s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.datepicker.ios {
+  background-color: transparent !important;
+}
+
+.datepicker.ios .datepicker-content {
+  padding: 0 !important;
+}
+
+.datepicker.ios .datepicker-header {
+  display: none !important;
+}
+
+.datepicker {
+  position: initial !important;
+}
+
+.datepicker.ios .datepicker-navbar {
+  display: none !important;
+}
+
+.datepicker.ios .datepicker-viewport::after {
+  /*background: transparent !important;*/
+  background: var(--datepicker-bg) !important;
+}
+
+.react-tel-input .flag-dropdown.open .selected-flag {
+  background: transparent !important;
+}
+
+.react-tel-input .flag-dropdown.open .selected-flag:focus {
+  background: transparent !important;
+}
+
+.react-tel-input .flag-dropdown.open {
+  background: transparent !important;
+}
+
+.react-tel-input .flag-dropdown.open:focus {
+  background: transparent !important;
+}
+
+.react-tel-input .selected-flag:focus {
+  background: transparent !important;
+}
+
+.react-tel-input .selected-flag:hover {
+  background: transparent !important;
+}
+
+.react-tel-input .form-control {
+  background: transparent !important;
+}
+
+.checkIcon path {
+  filter: drop-shadow(2px 1px 4px rgba(0, 0, 0, 1));
+}
+
+.portal {
+  position: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+.gradient {
+  background: linear-gradient(to right top, #e9ff00 20%, #000, #1b17d6 80%);
+}
+
+.left-dir-gradient:active {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.5), transparent);
+}
+
+.right-dir-gradient:active {
+  background: linear-gradient(-90deg, rgba(0, 0, 0, 0.5), transparent);
+}
+
+.card-overlay {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%),
+    transparent -22.857px 0px / 110.159% 100% no-repeat;
+}
+
+.card-overlay2 {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%),
+    transparent -22.857px 0px / 110.159% 100% no-repeat;
+}
+
+.chat-body {
+  max-height: calc(100vh - 46px);
+  max-height: calc(100svh - 46px);
+}
+
+.store-bg {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) -2.42%, rgba(0, 0, 0, 0.5) 81.06%);
+}
+
+.react-datepicker__header {
+  padding: 0 !important;
+  border-bottom: none !important;
+  background-color: transparent !important;
+}
+
+.react-datepicker__aria-live {
+  display: none;
+}
+
+.react-datepicker-popper {
+  padding-top: 0 !important;
+}
+
+.react-datepicker__time-container {
+  border-left: none !important;
+}
+
+.react-datepicker__header--time {
+  display: none;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--selected:hover {
+  background-color: #18191d !important;
+}
+
+.react-datepicker__time-list-item {
+  display: flex;
+  align-items: center;
+}
+
+.react-datepicker__time-list-item--selected {
+  background-color: #18191d !important;
+}
+
+.hero-1 {
+  background-image: url("/img/ui-2-hero-1.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.hero-1::before {
+  content: "";
+  background-image: url("/img/ui-2-hero-bg.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: -10px;
+  left: -10px;
+  z-index: -1;
+}
+
+.hero-2 {
+  background-image: url("/img/ui-2-hero-2.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  left: 58%;
+  transform: translateX(-50%);
+}
+
+.hero-3 {
+  background-image: url("/img/ui-2-hero-3.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  left: 70%;
+  transform: translateX(-50%);
+}
+
+.hero-4 {
+  background-image: url("/img/ui-2-hero-4.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  right: 0;
+}
+
+.react-datepicker-wrapper {
+  display: block !important;
+}
+
+#gradient-canvas {
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  max-height: 465px;
+  --gradient-color-1: #ef008f;
+  --gradient-color-2: #6ec3f4;
+  --gradient-color-3: #7038ff;
+  --gradient-color-4: #ffba27;
+}
+
+.text-shadow {
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 2px black;
+  font-family: "Inter", sans-serif;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  letter-spacing: -0.6px;
+}
