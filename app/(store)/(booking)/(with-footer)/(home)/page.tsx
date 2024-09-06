@@ -6,13 +6,13 @@ import { globalService } from "@/services/global";
 import { parseSettings } from "@/utils/parse-settings";
 import React from "react";
 import dynamic from "next/dynamic";
-import { brandService } from "@/services/brand";
+// import { brandService } from "@/services/brand";
 import storyService from "@/services/story";
 import { MobileCard } from "@/app/(store)/(booking)/components/mobile-card";
 import { SearchField } from "@/components/main-search-field";
 import { Header } from "@/components/header";
-import { SlidableProductList } from "@/components/slidable-product-list";
-import { Brands } from "./components/brands";
+// import { SlidableProductList } from "@/components/slidable-product-list";
+// import { Brands } from "./components/brands";
 
 const Stories = dynamic(() => import("../../components/stories"), {
   ssr: false,
@@ -131,7 +131,7 @@ const HomePage = async () => {
     sort: "asc",
   });
   const settings = await globalService.settings();
-  const brands = await brandService.getAll();
+  // const brands = await brandService.getAll();
   const parsedSettings = parseSettings(settings?.data);
   const recommendedShops = await shopService.getAll({
     lang,
@@ -211,17 +211,17 @@ const HomePage = async () => {
         <section>
           <Deals data={dealShops} />
         </section>
-        <section>
+        {/* <section>
           <Brands data={brands} />
-        </section>
+        </section> */}
         <section className="xl:container px-4">
           <Salons />
         </section>
-        <section className="xl:container">
+        {/* <section className="xl:container">
           <div className="md:my-20 my-7 bg-gray-faq rounded-button md:px-6 px-5 md:py-9 py-7">
             <SlidableProductList title="products" link="/products" visibleListCount={4} />
           </div>
-        </section>
+        </section> */}
         <section>
           <NearYou data={nearByShops} />
         </section>

@@ -24,10 +24,9 @@ export const Footer = ({ settings }: FooterProps) => {
                 <Image
                   src={settings?.logo || ""}
                   alt={settings?.title || "logo"}
-                  className="object-contain max-h-11 h-full !w-auto"
-                  quality={100}
-                  sizes="45px"
-                  fill
+                  className="invert grayscale"
+                  width={210}
+                  height={45}
                 />
               </Link>
             </div>
@@ -189,26 +188,20 @@ export const Footer = ({ settings }: FooterProps) => {
                   <Disclosure.Panel static>
                     <div className="flex flex-col  md:gap-6 gap-2">
                       <a
-                        href={`https://${settings?.instagram}`}
+                        href={settings?.instagram}
                         className="text-lg font-medium transition-all hover:underline"
-                        target="_blank"
-                        rel="noreferrer"
                       >
                         Instagram
                       </a>
                       <a
-                        href={`https://${settings?.facebook}`}
+                        href={settings?.facebook}
                         className="text-lg font-medium transition-all hover:underline"
-                        target="_blank"
-                        rel="noreferrer"
                       >
                         Facebook
                       </a>
                       <a
-                        href={`https://${settings?.twitter}`}
+                        href={settings?.twitter}
                         className="text-lg font-medium transition-all hover:underline"
-                        target="_blank"
-                        rel="noreferrer"
                       >
                         Twitter
                       </a>

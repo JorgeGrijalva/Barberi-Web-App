@@ -25,9 +25,16 @@ export const TopHeader = ({ title, description, link, buttonText }: TopHeaderPro
       <div className="absolute -top-1/2 md:right-72 right-0 md:w-[425px] w-[200px] h-[245px] scale-150 z-[-1]">
         <Image src="/img/fb_ellipse1.png" alt="fb_ellipse" fill className="object-contain" />
       </div>
-      <h1 className="md:text-[65px] text-3xl font-semibold break-words">{t(title)}</h1>
+      <div className="flex flex-col gap-4">
+        <h1 className="lg:text-5xl md:text-4xl text-3xl font-semibold break-words leading-normal">
+          {`${t(title)}`}
+        </h1>
+        <span className="bg-gradient-to-br py-8 font-semibold text-4xl md:text-[65px] from-primary to-primary/50 bg-clip-text text-transparent">
+          BÀRBERI APP
+        </span>
+      </div>
       <span className="md:text-xl text-sm">{t(description)}</span>
-      <Button as={Link} href={user ? link : "/login"} className="md:mt-10 mt-4">
+      <Button as={Link} href={user ? link : "/sign-up"} className="md:mt-10 mt-4">
         {t(buttonText)}
       </Button>
     </section>

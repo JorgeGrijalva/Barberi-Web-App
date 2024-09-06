@@ -4,10 +4,10 @@ import { ImageWithFallBack } from "@/components/image";
 import React from "react";
 import { Price } from "@/components/price";
 import { IconButton } from "@/components/icon-button";
-import HeartFillOutlinedIcon from "@/assets/icons/heart-fill-outlined";
-import HeartOutlinedIcon from "@/assets/icons/heart-outlined";
+
 import { useLike } from "@/hook/use-like";
 import clsx from "clsx";
+import { Heart } from "lucide-react";
 
 interface MasterCardProps {
   data: Master;
@@ -32,7 +32,11 @@ export const MasterCard = ({ data, selected }: MasterCardProps) => {
             handleLikeDisLike();
           }}
         >
-          {isLiked ? <HeartFillOutlinedIcon /> : <HeartOutlinedIcon size={26} />}
+          {!isLiked ? (
+            <Heart color="#ffffff" fill="#ffffff" />
+          ) : (
+            <Heart color="#E34F26" fill="#E34F26" size={26} />
+          )}
         </IconButton>
       </div>
       <div className="relative aspect-[198/182]">

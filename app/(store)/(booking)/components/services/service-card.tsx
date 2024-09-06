@@ -23,7 +23,7 @@ export const ServiceCard = ({ data, index, length }: ServiceCardProps) => (
       backgroundSize: "cover",
       backgroundPosition: "center",
     }}
-    className="rounded-button relative overflow-hidden flex flex-col md:max-w-[200px]"
+    className="rounded-button border border-zinc-200 shadow-zinc-800 hover:shadow-2xl   transition duration-300 relative overflow-hidden flex flex-col md:max-w-[200px]"
   >
     <div className="pt-6 pl-6">
       <span className="md:text-xl text-lg font-semibold line-clamp-1">

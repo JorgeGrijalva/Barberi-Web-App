@@ -13,10 +13,8 @@ import { createRatingText } from "@/utils/create-rating-text";
 import dayjs from "dayjs";
 import { IconButton } from "@/components/icon-button";
 import ShareIcon from "@/assets/icons/share";
-import HeartOutlinedIcon from "@/assets/icons/heart-outlined";
 import { defineShopWorkingSchedule } from "@/utils/define-shop-working-schedule";
 import { useLike } from "@/hook/use-like";
-import HeartFillOutlinedIcon from "@/assets/icons/heart-fill-outlined";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { LoadingCard } from "@/components/loading";
@@ -25,6 +23,7 @@ import { useModal } from "@/hook/use-modal";
 import VerifiedIcon from "@/assets/icons/verified";
 import { ShopSocialsPanel } from "@/components/shop-social-panel";
 import Chat3LineIcon from "remixicon-react/Chat3LineIcon";
+import { Heart } from "lucide-react";
 
 const ShopShare = dynamic(
   () => import("../shop-share").then((component) => ({ default: component.ShopShare })),
@@ -67,7 +66,11 @@ export const TopInfo = ({ data }: TopInfoProps) => {
             <ShareIcon />
           </IconButton>
           <IconButton onClick={handleLikeDisLike} className="text-white">
-            {isLiked ? <HeartFillOutlinedIcon size={36} /> : <HeartOutlinedIcon />}
+            {!isLiked ? (
+              <Heart color="#ffffff" fill="#ffffff" />
+            ) : (
+              <Heart color="#E34F26" fill="#E34F26" size={26} />
+            )}
           </IconButton>
         </div>
         <ImageWithFallBack

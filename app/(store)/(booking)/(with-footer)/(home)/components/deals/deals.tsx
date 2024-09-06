@@ -11,7 +11,6 @@ import { Shop } from "@/types/shop";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { DealCard } from "@/components/deal-card/deal-card";
 import { buildUrlQueryParams } from "@/utils/build-url-query-params";
-import useAddressStore from "@/global-store/address";
 
 interface DealsProps {
   data?: Paginate<Shop>;
@@ -20,20 +19,10 @@ interface DealsProps {
 export const Deals = ({ data }: DealsProps) => {
   const { t } = useTranslation();
   const { language } = useSettings();
-  const country = useAddressStore((state) => state.country);
-  const city = useAddressStore((state) => state.city);
   const { data: shops } = useInfiniteQuery(
-    ["shops", language?.locale, "b_count", "desc", country?.region_id, country?.id, city?.id],
+    ["shops", language?.locale, "b_count", "desc"],
     () =>
-      shopService.getAll({
-        lang: language?.locale,
-        perPage: 8,
-        column: "b_count",
-        sort: "desc",
-        region_id: country?.region_id || undefined,
-        country_id: country?.id || undefined,
-        city_id: city?.id || undefined,
-      }),
+      shopService.getAll({ lang: language?.locale, perPage: 8, column: "b_count", sort: "desc" }),
     {
       initialData: data ? { pages: [data], pageParams: [1] } : undefined,
     }

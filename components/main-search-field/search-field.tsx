@@ -64,7 +64,7 @@ export const SearchField = ({
     setIsDomReady(true);
   }, []);
   return (
-    <div className={clsx(isInHeader && "hidden xl:block", "w-full lg:w-auto")}>
+    <div className={clsx(isInHeader && "hidden xl:block", "w-full lg:w-auto ")}>
       <SearchFieldCore>
         {({
           openServices,
@@ -75,19 +75,19 @@ export const SearchField = ({
         }) => (
           <div
             className={clsx(
-              "rounded-button bg-white flex items-center justify-between lg:gap-5 gap-2.5 flex-col lg:flex-row w-full lg:w-auto",
+              "rounded-button bg-black/5 backdrop-blur-lg flex items-center  justify-between gap-1 flex-col lg:flex-row ",
               isInHeader && "border border-gray-link p-[5px]",
               withPadding && "lg:py-2 lg:px-5 px-3 py-3"
             )}
           >
-            <div className="relative w-full lg:w-auto rounded-button border border-gray-link lg:border-none">
+            <div className="relative w-full rounded-button border border-gray-link lg:border-none">
               <span className="absolute  lg:left-0 left-3 top-1/2 -translate-y-1/2">
                 <SearchIcon />
               </span>
               <button
                 className={clsx(
                   "lg:pl-6 pl-9 lg:py-2 py-3 text-sm outline-none lg:min-w-[160px] min-w-full text-start",
-                  !state.category.query && "text-gray-field"
+                  !state.category.query && "text-black"
                 )}
                 onClick={() => (isMobile ? router.push("/search/service") : openServices())}
               >
@@ -95,14 +95,14 @@ export const SearchField = ({
               </button>
             </div>
             <Separator isInHeader={isInHeader} />
-            <div className="relative w-full lg:w-auto rounded-button border border-gray-link lg:border-none">
+            <div className="relative w-full rounded-button border border-gray-link lg:border-none  whitespace-nowrap text-ellipsis overflow-hidden">
               <span className="absolute  lg:left-0 left-3 top-1/2 -translate-y-1/2">
                 <LocationIcon />
               </span>
               <button
                 className={clsx(
                   "lg:pl-6 pl-9 lg:py-2 py-3 text-sm outline-none lg:min-w-[160px] lg:max-w-[200px] min-w-full text-start whitespace-nowrap text-ellipsis overflow-hidden",
-                  !state.location.query && "text-gray-field"
+                  !state.location.query && "text-black"
                 )}
                 onClick={() => (isMobile ? router.push("/search/location") : openPlaceModal())}
               >
@@ -122,7 +122,7 @@ export const SearchField = ({
                 <span
                   className={clsx(
                     "lg:pl-6 pl-9 lg:py-2 py-3 text-sm outline-none",
-                    !state.date.query && "text-gray-field"
+                    !state.date.query && "text-black"
                   )}
                 >
                   {state.date.query ? state.date.query : t("date")}
@@ -157,8 +157,8 @@ export const SearchField = ({
                 </span>
                 <span
                   className={clsx(
-                    "lg:pl-6 pl-9 lg:py-2 py-3 text-sm  outline-none ",
-                    !state.searchTime.time && "text-gray-field"
+                    "lg:pl-6 pl-9 lg:py-2 py-3 text-sm  outline-none",
+                    !state.searchTime.time && "text-black"
                   )}
                 >
                   {state.searchTime.time ? (
@@ -171,7 +171,7 @@ export const SearchField = ({
                 </span>
               </Popover.Button>
               {!isMobile && (
-                <Popover.Panel className="absolute z-[9] left-0 md:left-auto top-0 md:top-14 md:rounded-button bg-white drop-shadow-xl md:px-5 md:pt-5 pb-5 px-4 pt-20 min-w-full md:min-w-[326px]">
+                <Popover.Panel className="absolute left-0 md:left-auto top-0 md:top-14 md:rounded-button bg-white drop-shadow-xl md:px-5 md:pt-5 pb-5 px-4 pt-20 min-w-full md:min-w-[326px]">
                   {renderTimeSelectPanel({ withButton })}
                 </Popover.Panel>
               )}
@@ -182,7 +182,7 @@ export const SearchField = ({
                   fullWidth
                   onClick={() => handleSearch({ replace: false })}
                   size="small"
-                  color="black"
+                  color="primary"
                 >
                   <Translate value="search" />
                 </Button>

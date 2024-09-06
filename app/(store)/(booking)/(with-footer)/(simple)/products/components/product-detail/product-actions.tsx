@@ -1,11 +1,10 @@
 import { Button } from "@/components/button";
-import HeartFillIcon from "@/assets/icons/heart-fill";
-import HeartIcon from "@/assets/icons/heart";
 import CompareIcon from "@/assets/icons/compare";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { useLike } from "@/hook/use-like";
 import useCompareStore from "@/global-store/compare";
+import { Heart } from "lucide-react";
 
 export const ProductActions = ({ id }: { id?: number }) => {
   const { isLiked, handleLikeDisLike } = useLike("product", id);
@@ -20,7 +19,13 @@ export const ProductActions = ({ id }: { id?: number }) => {
         onClick={() => handleLikeDisLike()}
         color="gray"
         size="xsmall"
-        leftIcon={isLiked ? <HeartFillIcon size={20} /> : <HeartIcon size={20} />}
+        leftIcon={
+          isLiked ? (
+            <Heart color="#ffffff" fill="#ffffff" />
+          ) : (
+            <Heart color="#E34F26" fill="#E34F26" size={26} />
+          )
+        }
       >
         {t("favorites")}
       </Button>

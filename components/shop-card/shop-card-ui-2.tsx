@@ -8,11 +8,10 @@ import { useTranslation } from "react-i18next";
 import { createRatingText } from "@/utils/create-rating-text";
 import { useLike } from "@/hook/use-like";
 import { IconButton } from "@/components/icon-button";
-import HeartLightIcon from "@/assets/icons/heart-light";
-import HeartIcon from "@/assets/icons/heart";
 import StarCurvedIcon from "@/assets/icons/star-curved";
 import clsx from "clsx";
 import VerifiedIcon from "@/assets/icons/verified";
+import { Heart } from "lucide-react";
 
 interface ShopCardProps {
   data: Shop;
@@ -25,7 +24,11 @@ export const ShopCardUi2 = ({ data }: ShopCardProps) => {
     <div className="relative rounded-button overflow-hidden group shadow-storeCard justify-start">
       <div className="absolute top-3 right-3 z-[1] text-dark">
         <IconButton onClick={handleLikeDisLike}>
-          {isLiked ? <HeartIcon /> : <HeartLightIcon />}
+          {!isLiked ? (
+            <Heart color="#ffffff" fill="#ffffff" />
+          ) : (
+            <Heart color="#E34F26" fill="#E34F26" size={26} />
+          )}
         </IconButton>
       </div>
 

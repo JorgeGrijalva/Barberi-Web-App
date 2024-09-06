@@ -3,7 +3,9 @@
 import React, { useCallback, useState } from "react";
 import dynamic from "next/dynamic";
 import { LoadingCard } from "@/components/loading";
+import { useAuth } from "@/hook/use-auth";
 import { AuthViews } from "./types";
+import { Translate } from "../translate";
 
 const SignUp = dynamic(() => import("./sign-up"), {
   loading: () => <LoadingCard />,
@@ -36,5 +38,14 @@ export default async ({ defaultView = "SIGNUP", redirectOnSuccess = true }: Auth
         return <SignUp />;
     }
   };
-  return renderView();
+  const { logOut } = useAuth();
+
+  return (
+    <>
+      {renderView()}
+      <button onClick={logOut}>
+        <Translate value="sign.out" />
+      </button>
+    </>
+  );
 };

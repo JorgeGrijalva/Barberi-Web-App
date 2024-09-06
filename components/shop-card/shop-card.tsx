@@ -7,11 +7,10 @@ import MapPinIcon from "@/assets/icons/map-pin";
 import { useTranslation } from "react-i18next";
 import { createRatingText } from "@/utils/create-rating-text";
 import { useLike } from "@/hook/use-like";
-import HeartOutlinedIcon from "@/assets/icons/heart-outlined";
-import HeartFillOutlinedIcon from "@/assets/icons/heart-fill-outlined";
 import { IconButton } from "@/components/icon-button";
 import VerifiedIcon from "@/assets/icons/verified";
 import clsx from "clsx";
+import { Heart } from "lucide-react";
 
 interface ShopCardProps {
   data: Shop;
@@ -24,7 +23,11 @@ export const ShopCard = ({ data }: ShopCardProps) => {
     <div className="relative rounded-button overflow-hidden group shadow-storeCard justify-start">
       <div className="absolute top-3 left-3 z-[1] text-dark">
         <IconButton onClick={handleLikeDisLike}>
-          {isLiked ? <HeartFillOutlinedIcon /> : <HeartOutlinedIcon size={26} />}
+          {!isLiked ? (
+            <Heart color="#ffffff" fill="#ffffff" />
+          ) : (
+            <Heart color="#E34F26" fill="#E34F26" size={26} />
+          )}
         </IconButton>
       </div>
       <div className="absolute top-3 right-3 rounded-button border border-white w-7 h-7 flex items-center justify-center z-[1] bg-white bg-opacity-60">

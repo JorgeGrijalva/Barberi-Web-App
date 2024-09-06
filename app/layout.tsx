@@ -94,7 +94,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
             {children}
             <CountrySelect settings={parsedSettings} />
           </Providers>
-          <NextTopLoader color="#BB9B6A" showSpinner={false} />
+          <NextTopLoader color="#0040ff" showSpinner={false} />
         </ThemeProvider>
       </body>
     </html>

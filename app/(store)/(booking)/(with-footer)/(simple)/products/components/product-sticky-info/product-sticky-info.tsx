@@ -12,12 +12,12 @@ import { useTranslation } from "react-i18next";
 import { useRouter } from "next/navigation";
 import { useLike } from "@/hook/use-like";
 import useCompareStore from "@/global-store/compare";
-import HeartFillIcon from "@/assets/icons/heart-fill";
-import HeartIcon from "@/assets/icons/heart";
+
 import CompareIcon from "@/assets/icons/compare";
 import Link from "next/link";
 import useUserStore from "@/global-store/user";
 import useCartStore from "@/global-store/cart";
+import { Heart } from "lucide-react";
 
 interface ProductStickyInfoProps {
   data?: ProductFull;
@@ -133,7 +133,7 @@ export const ProductStickyInfo = ({ data, selectedStock }: ProductStickyInfoProp
             )}
             <div className="items-center gap-2 hidden md:flex">
               <IconButton onClick={() => handleLikeDisLike()} color="lightGray" size="medium">
-                {isLiked ? <HeartFillIcon size={24} /> : <HeartIcon size={24} />}
+                {!isLiked ? <Heart fill="#ffffff" /> : <Heart fill="#E34F26" size={26} />}
               </IconButton>
               <IconButton
                 onClick={() => handleAddOrRemoveFromCompareList()}

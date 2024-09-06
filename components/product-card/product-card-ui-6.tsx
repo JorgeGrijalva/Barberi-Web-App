@@ -53,7 +53,7 @@ const ProductCardUi6 = ({
         </div>
       )}
       <div className="absolute top-4 right-4 z-[2]">
-        <ProductLike iconType="light" productId={data.id} />
+        <ProductLike productId={data.id} />
       </div>
       <Link
         href={`/products/${data.uuid}${

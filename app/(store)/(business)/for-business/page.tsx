@@ -33,6 +33,7 @@ const features = [
   {
     icon: <CalendarCheckIcon size={40} />,
     title: "online.booking",
+    description: "online.booking.description",
   },
   {
     icon: <ProgressIcon />,
@@ -42,24 +43,39 @@ const features = [
 
   {
     icon: <MoneyOutlinedIcon />,
-    title: "payment",
+    title: "payments",
     description: "payment.description",
   },
   {
     icon: <BellOutlinedIcon />,
-    title: "notification",
+    title: "notifications",
     description: "notifications.description",
   },
 ];
 
 const ForBusinessPage = () => (
   <main>
+    <div className="relative">
+      <div
+        aria-hidden="true"
+        className="absolute left-[calc(50%-36rem)] -z-10 transform-gpu blur-3xl sm:left-[calc(50%-18rem)] xl:left-[calc(50%-24rem)]"
+      >
+        <div
+          style={{
+            clipPath:
+              "polygon(73.6% 51.7%, 91.7% 11.8%, 100% 46.4%, 97.4% 82.2%, 92.5% 84.9%, 75.7% 64%, 55.3% 47.5%, 46.5% 49.4%, 45% 62.9%, 50.3% 87.2%, 21.3% 64.1%, 0.1% 100%, 5.4% 51.1%, 21.4% 63.9%, 58.9% 0.2%, 73.6% 51.7%)",
+          }}
+          className="aspect-[1108/632] w-[69.25rem] bg-gradient-to-r from-[#0033FF] to-[#0033FF] opacity-20"
+        />
+      </div>
+    </div>
     <TopHeader
       title="business.section.title"
       description="business.section.description"
       buttonText="get.started"
       link="/be-seller"
     />
+
     <section className="bg-gray-bg lg:py-12 md:py-8 py-5">
       <div className="xl:container px-4 grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 md:gap-7 gap-2.5">
         {features.map((feature) => (
@@ -148,21 +164,21 @@ const ForBusinessPage = () => (
       </p>
       <div className="xl:container px-4 grid md:grid-cols-3 gap-y-16">
         <div className="text-center">
-          <h4 className="text-6xl font-semibold">121m+</h4>
+          <h4 className="text-6xl font-semibold">+100%</h4>
           <p className="text-lg">
-            <Translate value="clients" />
+            <Translate value="visibility.customers" />
           </p>
         </div>
         <div className="text-center">
-          <h4 className="text-6xl font-semibold">12%</h4>
+          <h4 className="text-6xl font-semibold">24/7</h4>
           <p className="text-lg">
-            <Translate value="grow.percent" />
+            <Translate value="appointment.managment.all.day" />
           </p>
         </div>
         <div className="text-center">
-          <h4 className="text-6xl font-semibold">221k+</h4>
+          <h4 className="text-6xl font-semibold">-35%</h4>
           <p className="text-lg">
-            <Translate value="professinals" />
+            <Translate value="less.booking.cancel" />
           </p>
         </div>
       </div>
