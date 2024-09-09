@@ -84,7 +84,7 @@ const LikedMasters = () => {
   if ((actualList && actualList.length === 0) || listError) {
     return (
       <div className="h-full">
-        <h1 className="tmd:text-head text-base font-semibold mb-6">{t("favorite.salons")}</h1>
+        <h1 className="tmd:text-head text-base font-semibold mb-6">{t("favorite.masters")}</h1>
         <div className="flex justify-center relative h-full items-center">
           {isFetching && <LoadingCard centered />}
           <Empty
