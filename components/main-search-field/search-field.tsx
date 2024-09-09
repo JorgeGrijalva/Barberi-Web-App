@@ -73,12 +73,12 @@ export const SearchField = ({
           renderTimeSelectPanel,
           renderDateSelectPanel,
         }) => (
-          <div className="rounded-full lg:bg-black/5 backdrop-blur-lg p-1.5">
+          <div className="lg:rounded-full rounded-lg bg-black/5 backdrop-blur-lg p-1.5 z-[500]">
             <div
               className={clsx(
-                "bg-white rounded-full flex items-center  justify-between gap-1 flex-col lg:flex-row ",
+                "bg-white/90 lg:rounded-full p-1 rounded-lg flex items-center  justify-between gap-1 flex-col lg:flex-row ",
                 isInHeader && "border border-gray-link p-[5px]",
-                withPadding && "px-2 py-1"
+                withPadding && "lg:px-2 lg:py-1"
               )}
             >
               <div className="relative w-full rounded-button border border-gray-link lg:border-none">
@@ -148,7 +148,7 @@ export const SearchField = ({
               </Popover>
 
               <Separator isInHeader={isInHeader} />
-              <Popover className="md:relative w-full lg:w-auto">
+              <Popover className="md:relative w-full lg:w-auto z-[100]">
                 <Popover.Button
                   onClick={isMobile ? () => router.push("/search/time") : undefined}
                   className="relative lg:min-w-[160px] flex items-center justify-start w-full lg:w-auto min-w-full rounded-button border border-gray-link lg:border-none outline-none"
@@ -172,13 +172,13 @@ export const SearchField = ({
                   </span>
                 </Popover.Button>
                 {!isMobile && (
-                  <Popover.Panel className="absolute left-0 md:left-auto top-0 md:top-14 md:rounded-button bg-white drop-shadow-xl md:px-5 md:pt-5 pb-5 px-4 pt-20 min-w-full md:min-w-[326px]">
+                  <Popover.Panel className="absolute z-[500] left-0 md:left-auto top-0 md:top-14 md:rounded-button bg-white drop-shadow-xl md:px-5 md:pt-5 pb-5 px-4 pt-20 min-w-full md:min-w-[326px]">
                     {renderTimeSelectPanel({ withButton })}
                   </Popover.Panel>
                 )}
               </Popover>
               {withButton && (
-                <div className="w-full lg:w-auto">
+                <div className="w-full lg:w-auto ">
                   <Button
                     fullWidth
                     onClick={() => handleSearch({ replace: false })}

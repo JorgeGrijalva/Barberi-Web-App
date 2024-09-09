@@ -23,7 +23,9 @@ export const NavigationHeader = ({ settings }: HeaderProps) => (
       <div className="lg:hidden">
         <BackButton />
       </div>
-      <SearchField isInHeader />
+      <div className="mx-2">
+        <SearchField isInHeader />
+      </div>
       <HeaderButtons />
     </div>
   </header>

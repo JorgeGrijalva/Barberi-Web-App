@@ -19,6 +19,7 @@ import { Drawer } from "@/components/drawer";
 import { useModal } from "@/hook/use-modal";
 import { useMediaQuery } from "@/hook/use-media-query";
 import CartIndicator from "../cart-indicator";
+import { UserDropdownMenu } from "./user-dropdown-menu";
 
 const Sidebar = dynamic(() => import("../profile-sidebar"), {
   loading: () => <LoadingCard />,
@@ -33,7 +34,7 @@ export const HeaderButtons = ({ canOpenDrawer, showBusinessButton = true }: Head
   const user = useUserStore((state) => state.user);
   const router = useRouter();
   const { settings } = useSettings();
-  const [isSidebarOpen, openSidebar, closeSidebar] = useModal();
+  const [isSidebarOpen, closeSidebar] = useModal();
   const isMobile = useMediaQuery("(max-width: 1024px)");
   const { data: profile } = useQuery({
     queryKey: ["profile"],
@@ -45,12 +46,12 @@ export const HeaderButtons = ({ canOpenDrawer, showBusinessButton = true }: Head
     return (
       <div className="relative z-[4]">
         <div className="items-center gap-5 lg:flex hidden">
-          {/* <CartIndicator />
+          {/* <CartIndicator /> */}
           {showBusinessButton && (
             <Button as={Link} href="/for-business" size="small" color="blackOutlined">
               <Translate value="for.business" />
             </Button>
-          )} */}
+          )}
           <Button
             as={Link}
             href="/login"
@@ -69,9 +70,10 @@ export const HeaderButtons = ({ canOpenDrawer, showBusinessButton = true }: Head
       </div>
     );
   }
+
   return (
     <div className="flex items-center gap-5 relative z-[4]">
-      <div className="xl:flex items-center hidden gap-5">
+      <div className="lg:flex items-center hidden gap-5">
         <CartIndicator />
         {showBusinessButton && (
           <Button size="small" color="blackOutlined" as={Link} href="/for-business">
@@ -80,23 +82,25 @@ export const HeaderButtons = ({ canOpenDrawer, showBusinessButton = true }: Head
         )}
         <NotificationCenter />
       </div>
-      <button onClick={() => (isMobile && canOpenDrawer ? openSidebar() : router.push("/profile"))}>
-        {profile?.data?.img && !!user ? (
-          <div className="relative w-10 h-10 z-[-1]">
-            <Image
-              src={profile?.data?.img}
-              alt="profile"
-              className="rounded-full aspect-square object-cover w-10 h-10"
-              fill
+      <UserDropdownMenu>
+        <button>
+          {profile?.data?.img && !!user ? (
+            <div className="relative w-10 h-10 z-[-1]">
+              <Image
+                src={profile?.data?.img}
+                alt="profile"
+                className="rounded-full aspect-square object-cover w-10 h-10"
+                fill
+              />
+            </div>
+          ) : (
+            <ProfilePlaceholder
+              name={profile?.data && !!user ? profile?.data.firstname : settings?.title}
+              size={40}
             />
-          </div>
-        ) : (
-          <ProfilePlaceholder
-            name={profile?.data && !!user ? profile?.data.firstname : settings?.title}
-            size={40}
-          />
-        )}
-      </button>
+          )}
+        </button>
+      </UserDropdownMenu>
       {isMobile && canOpenDrawer && (
         <Drawer open={isSidebarOpen} onClose={closeSidebar} position="right">
           <div className="py-7">
