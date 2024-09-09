@@ -92,7 +92,7 @@ export const SearchField = ({
                   )}
                   onClick={() => (isMobile ? router.push("/search/service") : openServices())}
                 >
-                  {state.category.query || t("any")}
+                  {state.category.query || t("any").slice(0, 15)}...
                 </button>
               </div>
               <Separator isInHeader={isInHeader} />
