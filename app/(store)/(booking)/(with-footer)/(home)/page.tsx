@@ -157,7 +157,7 @@ const HomePage = async () => {
   });
   const stories = await storyService.getAll({ lang });
   return (
-    <>
+    <div className="overflow-x-hidden w-screen">
       <div>
         <div className="relative">
           <div
@@ -240,7 +240,7 @@ const HomePage = async () => {
           </div>
         </section>
       </main>
-    </>
+    </div>
   );
 };
 
