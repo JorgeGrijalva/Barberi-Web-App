@@ -69,23 +69,12 @@ export const serviceBgs = [
 ];
 
 export const weekDays = [
-  // "sunday",
-  // "monday",
-  // "tuesday",
-  // "wednesday",
-  // "thursday",
-  // "friday",
-  // "saturday",
-
-  ///// in spanish ////
-  
-  "domingo",
-  "lunes",
-  "martes",
-  "miércoles",
-  "jueves",
-  "viernes",
-  "sábado",
+  "sunday",
+  "monday",
+  "tuesday",
+  "wednesday",
+  "thursday",
+  "friday",
 ];
 
 export const googleCalendarEventCreateUrl = "https://calendar.google.com/calendar/u/0/r/eventedit";
