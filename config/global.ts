@@ -24,19 +24,19 @@ export const storyTiming = 10;
 
 export const cardColors = ["#B9CCDF80", "#E3CDE180"];
 
-export const service1 = "#FFEDD7";
-export const service2 = "#D6FFD2";
-export const service3 = "#F1D2D2";
-export const service4 = "#D8DCFF";
-export const service5 = "#F7D8FF";
+export const service1 = "#0033FF30";
+export const service2 = "#0033FF30";
+export const service3 = "#0033FF30";
+export const service4 = "#0033FF30";
+export const service5 = "#0033FF30";
 
-export const service6 = "#C3F8FF";
-export const service7 = "#E8E8E8";
-export const service8 = "#FFE6B4";
-export const service9 = "#FFD2E8";
-export const service10 = "#C6F4E4";
-export const service11 = "#C1E8FF";
-export const service12 = "#C2B6A4";
+export const service6 = "#0033FF30";
+export const service7 = "#0033FF30";
+export const service8 = "#0033FF30";
+export const service9 = "#0033FF30";
+export const service10 = "#0033FF30";
+export const service11 = "#0033FF30";
+export const service12 = "#0033FF30";
 
 export const serviceColors = [
   service1,

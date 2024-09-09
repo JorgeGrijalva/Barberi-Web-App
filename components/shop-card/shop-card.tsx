@@ -38,8 +38,9 @@ export const ShopCard = ({ data }: ShopCardProps) => {
           <ImageWithFallBack
             src={data.background_img}
             alt={data.translation?.title || ""}
-            fill
-            className="object-cover transition-all group-hover:scale-105"
+            width={300}
+            height={100}
+            className=" transition-all group-hover:scale-105 h-36 object-cover"
           />
           <div className="absolute -bottom-5 rounded-full bg-white w-10 h-10 left-6 flex items-center justify-center z-[1]">
             <Image
