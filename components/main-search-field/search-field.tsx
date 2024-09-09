@@ -73,10 +73,10 @@ export const SearchField = ({
           renderTimeSelectPanel,
           renderDateSelectPanel,
         }) => (
-          <div className="rounded-full lg:bg-black/5 backdrop-blur-lg p-1.5">
+          <div className="lg:rounded-full rounded-lg bg-black/5 backdrop-blur-lg p-1.5">
             <div
               className={clsx(
-                "bg-white rounded-full flex items-center  justify-between gap-1 flex-col lg:flex-row ",
+                "bg-white lg:rounded-full rounded-lg flex items-center  justify-between gap-1 flex-col lg:flex-row ",
                 isInHeader && "border border-gray-link p-[5px]",
                 withPadding && "px-2 py-1"
               )}
