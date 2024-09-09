@@ -80,7 +80,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
       lang={selectedLocale || defaultLanguage?.locale || "en"}
       dir={selectedDirection || (defaultLanguage?.backward ? "rtl" : "ltr")}
     >
-      <body className={clsx(inter.className)}>
+      <body className={clsx(inter.className, "overflow-x-hidden w-screen")}>
         <div id="portal" />
         <ThemeProvider attribute="class" defaultTheme="light">
           <Providers

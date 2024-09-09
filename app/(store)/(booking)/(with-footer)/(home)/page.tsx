@@ -158,7 +158,7 @@ const HomePage = async () => {
   const stories = await storyService.getAll({ lang });
   return (
     <>
-      <div className="overflow-hidden w-screen">
+      <div>
         <div className="relative">
           <div
             aria-hidden="true"
