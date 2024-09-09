@@ -28,7 +28,7 @@ const CountryIndicator = () => {
   if (!mounted || !country || isMobile) return null;
 
   return (
-    <div className="relative">
+    <>
       <button
         onClick={openCountrySelectModal}
         className="border border-footerBg px-4 py-2 rounded-button"
@@ -41,7 +41,7 @@ const CountryIndicator = () => {
         </div>
       </button>
       {showDialog && pathname === "/" && (
-        <div className="absolute bg-white px-4 py-5 max-w-[460px] w-96 rounded-button mt-2">
+        <div className="fixed z-[500] bg-white/5 backdrop-blur-lg border-zinc-400 border px-4 py-5 max-w-[460px] w-96 rounded-button mt-2  top-8 left-8">
           <p className="font-medium text-sm mb-5">
             {`${t("We're showing you items that ship to")} ${country?.translation?.title}. ${t(
               "To see items that ship to a different country, change your delivery address."
@@ -69,7 +69,7 @@ const CountryIndicator = () => {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

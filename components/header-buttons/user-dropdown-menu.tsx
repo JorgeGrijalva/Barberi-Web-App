@@ -4,14 +4,15 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuPortal,
+  // DropdownMenuPortal,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
+  // DropdownMenuSub,
+  // DropdownMenuSubContent,
+  // DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/DropdownMenu";
+import { useAuth } from "@/hook/use-auth";
 
 import {
   Cloud,
@@ -20,19 +21,26 @@ import {
   Keyboard,
   LifeBuoy,
   LogOut,
-  Mail,
-  MessageSquare,
-  Plus,
-  PlusCircle,
+  // Mail,
+  // MessageSquare,
+  // Plus,
+  // PlusCircle,
   Settings,
   User,
-  UserPlus,
-  Users,
+  // UserPlus,
+  // Users,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export const UserDropdownMenu = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
+
+  const { logOut } = useAuth();
+
+  const handleLogout = async () => {
+    await logOut();
+    router.replace("/");
+  };
 
   return (
     <DropdownMenu modal={false}>
@@ -55,7 +63,11 @@ export const UserDropdownMenu = ({ children }: { children: React.ReactNode }) =>
             <span>Billing</span>
             <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
           </DropdownMenuItem>
-          <DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => {
+              router.push("/settings");
+            }}
+          >
             <Settings className="mr-2 h-4 w-4" />
             <span>Settings</span>
             <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
@@ -67,7 +79,7 @@ export const UserDropdownMenu = ({ children }: { children: React.ReactNode }) =>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuGroup>
+        {/* <DropdownMenuGroup>
           <DropdownMenuItem>
             <Users className="mr-2 h-4 w-4" />
             <span>Team</span>
@@ -101,7 +113,7 @@ export const UserDropdownMenu = ({ children }: { children: React.ReactNode }) =>
             <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuGroup>
-        <DropdownMenuSeparator />
+        <DropdownMenuSeparator /> */}
         <DropdownMenuItem>
           <Github className="mr-2 h-4 w-4" />
           <span>GitHub</span>
@@ -115,7 +127,11 @@ export const UserDropdownMenu = ({ children }: { children: React.ReactNode }) =>
           <span>API</span>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => {
+            handleLogout();
+          }}
+        >
           <LogOut className="mr-2 h-4 w-4" />
           <span>Log out</span>
           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
