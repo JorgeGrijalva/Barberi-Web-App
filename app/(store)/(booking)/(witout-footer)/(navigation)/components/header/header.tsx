@@ -17,7 +17,7 @@ export const NavigationHeader = ({ settings }: HeaderProps) => (
           alt={settings?.title || "logo"}
           width={148}
           height={28}
-          className="object-contain h-7 w-auto"
+          className="object-contain h-7 w-32"
         />
       </Link>
       <div className="lg:hidden">
