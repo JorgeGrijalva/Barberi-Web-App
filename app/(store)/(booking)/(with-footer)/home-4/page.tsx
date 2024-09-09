@@ -8,7 +8,7 @@ import dynamic from "next/dynamic";
 import { SearchField } from "@/components/main-search-field";
 import { Header } from "@/components/header";
 import { FindBestSalon } from "@/components/find-best-salon";
-import { SlidableProductList } from "@/components/slidable-product-list";
+// import { SlidableProductList } from "@/components/slidable-product-list";
 import storyService from "@/services/story";
 
 const Stories = dynamic(() => import("../../components/stories"), {
@@ -126,11 +126,11 @@ const HomePage = async () => {
           <Recommended data={shops} />
           <Masters />
         </section>
-        <section className="xl:container">
+        {/* <section className="xl:container">
           <div className="md:my-20 my-7 bg-gray-faq rounded-button md:px-6 px-5 md:py-9 py-7">
             <SlidableProductList title="products" link="/products" visibleListCount={4} />
           </div>
-        </section>
+        </section> */}
         <section>
           <NearYou data={shops} />
         </section>

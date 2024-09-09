@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { shopService } from "@/services/shop";
 import dynamic from "next/dynamic";
 import { MasterCardLoading } from "@/components/master-card/master-card-loading";
-import { SlidableProductList } from "@/components/slidable-product-list";
+// import { SlidableProductList } from "@/components/slidable-product-list";
 import { Button } from "@/components/button";
 import { Translate } from "@/components/translate";
 import Link from "next/link";
@@ -90,15 +90,17 @@ const SingleShop = async ({ params }: { params: { id: string } }) => {
             </div>
           </div>
         </div>
-        <div className="md:my-20 my-7 bg-gray-faq rounded-button md:px-6 px-5 md:py-9 py-7">
+        {/* <div className="md:my-20 my-7 bg-gray-faq rounded-button md:px-6 px-5 md:py-9 py-7">
           <SlidableProductList
             title="products"
             link="/products"
             visibleListCount={4}
             params={{ shop_id: shop?.data.id }}
           />
+        </div> */}
+        <div className="pb-8">
+          <NearbyShops shop={shop?.data} />
         </div>
-        <NearbyShops shop={shop?.data} />
       </section>
       <div className="fixed bottom-0 w-full rounded-t-2xl px-4 py-5 lg:hidden bg-white z-[8] shadow-fixedBooking">
         <Button color="black" fullWidth as={Link} href={`/shops/${params.id}/booking`}>

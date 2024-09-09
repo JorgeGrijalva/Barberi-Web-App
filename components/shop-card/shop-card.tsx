@@ -10,7 +10,7 @@ import { useLike } from "@/hook/use-like";
 import { IconButton } from "@/components/icon-button";
 import VerifiedIcon from "@/assets/icons/verified";
 import clsx from "clsx";
-import { Heart } from "lucide-react";
+import { Heart, StarIcon } from "lucide-react";
 
 interface ShopCardProps {
   data: Shop;
@@ -30,9 +30,9 @@ export const ShopCard = ({ data }: ShopCardProps) => {
           )}
         </IconButton>
       </div>
-      <div className="absolute top-3 right-3 rounded-button border border-white w-7 h-7 flex items-center justify-center z-[1] bg-white bg-opacity-60">
+      {/* <div className="absolute top-3 right-3 rounded-button border border-white w-7 h-7 flex items-center justify-center z-[1] bg-white bg-opacity-60">
         <span className="text-sm font-semibold">{data.r_avg || 0}</span>
-      </div>
+      </div> */}
       <Link href={`/shops/${data.slug}`} scroll>
         <div className="relative aspect-[2/1]">
           <ImageWithFallBack
@@ -80,14 +80,20 @@ export const ShopCard = ({ data }: ShopCardProps) => {
             </span>
           </div>
           <div className="h-px w-full bg-gray-link" />
-          <div className="flex items-center gap-2">
-            <span className="md:text-sm text-xs font-medium">
-              {t(createRatingText(data.r_avg))}
-            </span>
-            <div className="bg-footerBg rounded-full w-1 h-1" />
-            <span className="md:text-sm text-xs font-normal">
-              {data.r_count || 0} {t("reviews")}
-            </span>
+          <div className="flex justify-between">
+            <div className=" flex items-center gap-2">
+              <span className="md:text-sm text-xs font-medium">
+                {t(createRatingText(data.r_avg))}
+              </span>
+              <div className="bg-footerBg rounded-full w-1 h-1" />
+              <span className="md:text-sm text-xs font-normal">
+                {data.r_count || 0} {t("reviews")}
+              </span>
+            </div>
+            <div className="rounded-button gap-1 flex items-center justify-center">
+              <StarIcon fill="#EBC92F" color="#EBC92F" size={20} />
+              <span className="text-sm font-semibold">{data.r_avg || 0}</span>
+            </div>
           </div>
         </div>
       </Link>

@@ -7,7 +7,7 @@ import { parseSettings } from "@/utils/parse-settings";
 import React from "react";
 import dynamic from "next/dynamic";
 import { MobileCard } from "@/app/(store)/(booking)/components/mobile-card";
-import { SlidableProductList } from "@/components/slidable-product-list";
+// import { SlidableProductList } from "@/components/slidable-product-list";
 import storyService from "@/services/story";
 import { SearchField } from "./components/search-field";
 import { Canvas } from "./components/canvas";
@@ -189,11 +189,11 @@ const HomePage = async () => {
         <section>
           <Deals data={shops} />
         </section>
-        <section className="xl:container">
+        {/* <section className="xl:container">
           <div className="md:my-20 my-7 bg-gray-faq rounded-button md:px-6 px-5 md:py-9 py-7">
             <SlidableProductList title="products" link="/products" visibleListCount={4} />
           </div>
-        </section>
+        </section> */}
         <section>
           <NearYou data={shops} />
         </section>

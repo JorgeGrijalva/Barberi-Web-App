@@ -7,7 +7,7 @@ import { IconButton } from "@/components/icon-button";
 
 import { useLike } from "@/hook/use-like";
 import clsx from "clsx";
-import { Heart } from "lucide-react";
+import { Heart, StarIcon } from "lucide-react";
 
 interface MasterCardProps {
   data: Master;
@@ -50,8 +50,9 @@ export const MasterCard = ({ data, selected }: MasterCardProps) => {
       <div className="xl:pb-5 lg:pb-3 px-3 pb-2 text-start">
         <div className="flex items-center justify-between mt-3">
           <strong className="text-lg font-semibold ">{data?.firstname}</strong>
-          <div className="rounded-button border border-gray-link w-7 h-7 flex items-center justify-center z-[1] bg-white bg-opacity-60">
-            <span className="text-sm font-semibold">{data?.r_avg ?? 0}</span>
+          <div className="rounded-button gap-1 flex items-center justify-center">
+            <StarIcon fill="#EBC92F" color="#EBC92F" size={20} />
+            <span className="text-sm font-semibold">{data.r_avg || 0}</span>
           </div>
         </div>
         <span className="text-sm text-gray-field">{data?.translation?.title || t("master")}</span>

@@ -23,7 +23,7 @@ import { useModal } from "@/hook/use-modal";
 import VerifiedIcon from "@/assets/icons/verified";
 import { ShopSocialsPanel } from "@/components/shop-social-panel";
 import Chat3LineIcon from "remixicon-react/Chat3LineIcon";
-import { Heart } from "lucide-react";
+import { Heart, StarIcon } from "lucide-react";
 
 const ShopShare = dynamic(
   () => import("../shop-share").then((component) => ({ default: component.ShopShare })),
@@ -108,8 +108,9 @@ export const TopInfo = ({ data }: TopInfoProps) => {
             </div>
             <div className="md:flex items-center gap-3 text-white mt-3 hidden">
               <div className="flex items-center gap-2 ">
-                <div className="w-10 h-10 rounded-button bg-white bg-opacity-30 backdrop-blur-md flex items-center justify-center text-sm ">
-                  {data?.data.r_avg || 0}
+                <div className="rounded-button gap-1 flex items-center justify-center">
+                  <StarIcon fill="#EBC92F" color="#EBC92F" size={20} />
+                  <span className="text-sm font-semibold">{data?.data.r_avg || 0}</span>
                 </div>
                 <span className="text-sm font-medium">{t(createRatingText(data?.data.r_avg))}</span>
               </div>

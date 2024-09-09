@@ -10,7 +10,7 @@ import Image from "next/image";
 import clsx from "clsx";
 import { Header } from "@/components/header";
 import { FindBestSalon } from "@/components/find-best-salon";
-import { SlidableProductList } from "@/components/slidable-product-list";
+// import { SlidableProductList } from "@/components/slidable-product-list";
 import { SearchField } from "./components/search-field";
 import { Services } from "./components/services";
 import { MobileCard } from "./components/mobile-card";
@@ -139,11 +139,11 @@ const HomePage = async () => {
         <section className="xl:container px-4">
           <NearYou data={shops} />
         </section>
-        <section className="xl:container">
+        {/* <section className="xl:container">
           <div className="md:my-20 my-7 bg-gray-faq rounded-button md:px-6 px-5 md:py-9 py-7">
             <SlidableProductList title="products" link="/products" visibleListCount={4} />
           </div>
-        </section>
+        </section> */}
         <section className="xl:container px-4">
           <Salons />
         </section>
