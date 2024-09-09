@@ -46,7 +46,7 @@ export const ShopsInMap = () => {
 
   return (
     <Map
-      containerStyles={{ width: "100%", height: "100%", zIndex: -50 }}
+      containerStyles={{ width: "100%", height: "100%" }}
       center={
         urlSearchParams.has("latitude") && urlSearchParams.has("longitude")
           ? {
