@@ -19,13 +19,13 @@ const ReviewSummaryShort = ({ type, typeId }: ReviewSummaryProps) => {
     reviewService.getGroupRating(type, typeId)
   );
   return (
-    <div className="grid grid-cols-4 gap-4">
-      <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4">
+      <div className="flex flex-row gap-4">
         <div className="border border-gray-border dark:border-gray-bold rounded-2xl flex items-center justify-center flex-col flex-1">
           <strong className="text-3xl font-bold">{data?.avg || 0}</strong>
           <span className="text-xs font-medium text-center">{t("total.rating")}</span>
         </div>
-        <div className="border border-gray-border dark:border-gray-bold  rounded-2xl flex items-center gap-2 justify-center py-7 flex-wrap">
+        <div className="border border-gray-border dark:border-gray-bold  rounded-2xl flex items-center gap-2 justify-center py-7 flex-col px-4">
           <div className="flex items-center gap-0.5">
             <span className="text-yellow">
               <StarSmileIcon />

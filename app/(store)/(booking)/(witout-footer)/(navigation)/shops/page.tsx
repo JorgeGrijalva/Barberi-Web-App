@@ -111,7 +111,7 @@ const ShopsPage = () => {
             loadMore={fetchNextPage}
             loading={isFetchingNextPage}
           >
-            <div className="grid xl:grid-cols-3 sm:grid-cols-2 xl:gap-7 md:gap-4 gap-2.5 xl:pt-8 pt-0 pb-8">
+            <div className="grid grid-cols-3 px-8 xl:gap-7 md:gap-4 gap-2.5 xl:pt-8 pt-0 pb-8">
               {shopList?.map((shop) => (
                 <ShopCard data={shop} key={shop.id} />
               ))}
@@ -144,7 +144,7 @@ const ShopsPage = () => {
 
   return (
     <section className="xl:container px-4">
-      <div className="grid xl:grid-cols-4 lg:grid-cols-2 grid-cols-1 gap-7">
+      <div className="grid xl:grid-cols-4 lg:grid-cols-2 grid-cols-1 gap-7 pb-8">
         <div className="hidden xl:block">
           <Filters />
         </div>

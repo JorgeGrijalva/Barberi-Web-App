@@ -61,12 +61,12 @@ export const MasterCard = ({ data, selected }: MasterCardProps) => {
             <Price number={data?.service_master?.price} />
           </strong>
         </div>
-        {!!data?.service_master?.type?.length && (
+        {/* {!!data?.service_master?.type?.length && (
           <div className="flex flex-wrap flex-col gap-1 pt-2.5 mt-2.5 border-t border-gray-link">
             <span className="text-sm">{t("service.place")}</span>
             <strong className="text-lg font-bold">{t(data?.service_master?.type)}</strong>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );
