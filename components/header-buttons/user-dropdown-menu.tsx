@@ -17,8 +17,6 @@ import { useAuth } from "@/hook/use-auth";
 import {
   Cloud,
   CreditCard,
-  Github,
-  Keyboard,
   LifeBuoy,
   LogOut,
   // Mail,
@@ -26,7 +24,9 @@ import {
   // Plus,
   // PlusCircle,
   Settings,
+  TicketCheck,
   User,
+  Wallet,
   // UserPlus,
   // Users,
 } from "lucide-react";
@@ -58,9 +58,13 @@ export const UserDropdownMenu = ({ children }: { children: React.ReactNode }) =>
             <span>Profile</span>
             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
           </DropdownMenuItem>
-          <DropdownMenuItem>
-            <CreditCard className="mr-2 h-4 w-4" />
-            <span>Billing</span>
+          <DropdownMenuItem
+            onClick={() => {
+              router.push("/wallet");
+            }}
+          >
+            <Wallet className="mr-2 h-4 w-4" />
+            <span>Wallet</span>
             <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem
@@ -72,9 +76,13 @@ export const UserDropdownMenu = ({ children }: { children: React.ReactNode }) =>
             <span>Settings</span>
             <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
           </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Keyboard className="mr-2 h-4 w-4" />
-            <span>Keyboard shortcuts</span>
+          <DropdownMenuItem
+            onClick={() => {
+              router.push("/orders");
+            }}
+          >
+            <TicketCheck className="mr-2 h-4 w-4" />
+            <span>Orders</span>
             <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuGroup>
@@ -114,11 +122,19 @@ export const UserDropdownMenu = ({ children }: { children: React.ReactNode }) =>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator /> */}
-        <DropdownMenuItem>
-          <Github className="mr-2 h-4 w-4" />
-          <span>GitHub</span>
+        <DropdownMenuItem
+          onClick={() => {
+            router.push("/billing");
+          }}
+        >
+          <CreditCard className="mr-2 h-4 w-4" />
+          <span>Billing</span>
         </DropdownMenuItem>
-        <DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => {
+            router.push("/hotline");
+          }}
+        >
           <LifeBuoy className="mr-2 h-4 w-4" />
           <span>Support</span>
         </DropdownMenuItem>
