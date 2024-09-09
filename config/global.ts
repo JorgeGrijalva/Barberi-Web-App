@@ -68,13 +68,6 @@ export const serviceBgs = [
   "/img/service12.png",
 ];
 
-export const weekDays = [
-  "sunday",
-  "monday",
-  "tuesday",
-  "wednesday",
-  "thursday",
-  "friday",
-];
+export const weekDays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday"];
 
 export const googleCalendarEventCreateUrl = "https://calendar.google.com/calendar/u/0/r/eventedit";

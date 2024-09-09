@@ -41,7 +41,7 @@ export const Modal = ({
   <Transition appear show={isOpen} as={Fragment}>
     <Dialog
       as="div"
-      className="relative z-[9]"
+      className="relative z-[100]"
       unmount
       onClose={() => (!!onClose && !disableCloseOnOverlayClick ? onClose() : null)}
     >
@@ -54,10 +54,10 @@ export const Modal = ({
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
-        <div className="fixed inset-0 bg-black bg-opacity-40 z-[7]" />
+        <div className="fixed inset-0 bg-black bg-opacity-40 z-[90]" />
       </Transition.Child>
 
-      <div className="fixed sm:inset-0 w-full bottom-0 left-0 sm:overflow-y-auto z-[9]">
+      <div className="fixed sm:inset-0 w-full bottom-0 left-0 sm:overflow-y-auto z-[100]">
         <div className="flex min-h-full items-center justify-center md:p-4 text-center">
           <Transition.Child
             as={Fragment}
@@ -83,7 +83,7 @@ export const Modal = ({
               {withCloseButton && (
                 <div
                   className={clsx(
-                    "sm:top-4 sm:right-5 rtl:left-5 max-w-max rtl:right-auto z-10",
+                    "sm:top-4 sm:right-5 rtl:left-5 max-w-max rtl:right-auto z-[100]",
                     fixedButton
                       ? "sm:absolute fixed right-2 top-2 rtl:left-2 rtl:right-auto"
                       : "absolute top-4 right-4 rtl:left-4 rtl:right-auto"
