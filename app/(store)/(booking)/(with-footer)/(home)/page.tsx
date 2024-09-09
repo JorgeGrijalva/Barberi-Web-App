@@ -188,7 +188,7 @@ const HomePage = async () => {
       </div>
 
       <main>
-        <section>
+        <section className="mb-16">
           <Recommended data={recommendedShops} />
           <Masters />
         </section>
