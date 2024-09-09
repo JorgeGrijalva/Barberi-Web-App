@@ -158,8 +158,8 @@ const HomePage = async () => {
   const stories = await storyService.getAll({ lang });
   return (
     <div className="overflow-x-hidden w-screen">
-      <div>
-        <div className="relative">
+      <div className="overflow-x-hidden">
+        <div className="relative ">
           <div
             aria-hidden="true"
             className="absolute left-[calc(50%-36rem)] top-10 -z-10 transform-gpu blur-3xl sm:left-[calc(50%-18rem)] xl:left-[calc(50%-24rem)]"
