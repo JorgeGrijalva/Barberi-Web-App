@@ -73,121 +73,124 @@ export const SearchField = ({
           renderTimeSelectPanel,
           renderDateSelectPanel,
         }) => (
-          <div
-            className={clsx(
-              "rounded-button bg-black/5 backdrop-blur-lg flex items-center  justify-between gap-1 flex-col lg:flex-row ",
-              isInHeader && "border border-gray-link p-[5px]",
-              withPadding && "lg:py-2 lg:px-5 px-3 py-3"
-            )}
-          >
-            <div className="relative w-full rounded-button border border-gray-link lg:border-none">
-              <span className="absolute  lg:left-0 left-3 top-1/2 -translate-y-1/2">
-                <SearchIcon />
-              </span>
-              <button
-                className={clsx(
-                  "lg:pl-6 pl-9 lg:py-2 py-3 text-sm outline-none lg:min-w-[160px] min-w-full text-start",
-                  !state.category.query && "text-black"
-                )}
-                onClick={() => (isMobile ? router.push("/search/service") : openServices())}
-              >
-                {state.category.query || t("any")}
-              </button>
-            </div>
-            <Separator isInHeader={isInHeader} />
-            <div className="relative w-full rounded-button border border-gray-link lg:border-none  whitespace-nowrap text-ellipsis overflow-hidden">
-              <span className="absolute  lg:left-0 left-3 top-1/2 -translate-y-1/2">
-                <LocationIcon />
-              </span>
-              <button
-                className={clsx(
-                  "lg:pl-6 pl-9 lg:py-2 py-3 text-sm outline-none lg:min-w-[160px] lg:max-w-[200px] min-w-full text-start whitespace-nowrap text-ellipsis overflow-hidden",
-                  !state.location.query && "text-black"
-                )}
-                onClick={() => (isMobile ? router.push("/search/location") : openPlaceModal())}
-              >
-                {state.location.query || t("where")}
-              </button>
-            </div>
-            <Separator isInHeader={isInHeader} />
-            <Popover className="md:relative w-full lg:w-auto">
-              <Popover.Button
-                ref={setReferenceElement}
-                onClick={isMobile ? () => router.push("/search/date") : undefined}
-                className="relative lg:min-w-[160px] flex items-center justify-start w-full lg:w-auto min-w-full rounded-button border border-gray-link lg:border-none outline-none"
-              >
-                <span className="absolute lg:left-0 left-3  top-1/2 -translate-y-1/2">
-                  <CalendarIcon />
-                </span>
-                <span
-                  className={clsx(
-                    "lg:pl-6 pl-9 lg:py-2 py-3 text-sm outline-none",
-                    !state.date.query && "text-black"
-                  )}
-                >
-                  {state.date.query ? state.date.query : t("date")}
-                </span>
-              </Popover.Button>
-              {!isMobile &&
-                isDomReady &&
-                ReactDOM.createPortal(
-                  <Popover.Panel
-                    ref={setPopperElement}
-                    style={styles.popper}
-                    {...attributes.popper}
-                    unmount
-                    className="z-[9]  md:top-14 md:rounded-button bg-white drop-shadow-xl md:px-5 md:pt-5 pb-5 px-4 pt-20 min-w-full md:min-w-[326px]"
-                  >
-                    {renderDateSelectPanel()}
-                  </Popover.Panel>,
-                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                  // @ts-expect-error
-                  document.getElementById("portal")
-                )}
-            </Popover>
-
-            <Separator isInHeader={isInHeader} />
-            <Popover className="md:relative w-full lg:w-auto">
-              <Popover.Button
-                onClick={isMobile ? () => router.push("/search/time") : undefined}
-                className="relative lg:min-w-[160px] flex items-center justify-start w-full lg:w-auto min-w-full rounded-button border border-gray-link lg:border-none outline-none"
-              >
-                <span className="absolute lg:left-0 left-3 top-1/2 -translate-y-1/2">
-                  <ClockIcon />
-                </span>
-                <span
-                  className={clsx(
-                    "lg:pl-6 pl-9 lg:py-2 py-3 text-sm  outline-none",
-                    !state.searchTime.time && "text-black"
-                  )}
-                >
-                  {state.searchTime.time ? (
-                    <span>
-                      {state.searchTime.time.from} - {state.searchTime.time.to}
-                    </span>
-                  ) : (
-                    t("time")
-                  )}
-                </span>
-              </Popover.Button>
-              {!isMobile && (
-                <Popover.Panel className="absolute left-0 md:left-auto top-0 md:top-14 md:rounded-button bg-white drop-shadow-xl md:px-5 md:pt-5 pb-5 px-4 pt-20 min-w-full md:min-w-[326px]">
-                  {renderTimeSelectPanel({ withButton })}
-                </Popover.Panel>
+          <div className="rounded-full bg-black/5 backdrop-blur-lg p-1.5">
+            <div
+              className={clsx(
+                "bg-white rounded-full flex items-center  justify-between gap-1 flex-col lg:flex-row ",
+                isInHeader && "border border-gray-link p-[5px]",
+                withPadding && "px-2 py-1"
               )}
-            </Popover>
-            {withButton && (
-              <div className="w-full lg:w-auto">
-                <Button
-                  fullWidth
-                  onClick={() => handleSearch({ replace: false })}
-                  size="small"
-                  color="primary"
+            >
+              <div className="relative w-full rounded-button border border-gray-link lg:border-none">
+                <span className="absolute  lg:left-0 left-3 top-1/2 -translate-y-1/2">
+                  <SearchIcon />
+                </span>
+                <button
+                  className={clsx(
+                    "lg:pl-6 pl-9 lg:py-2 py-3 text-sm outline-none lg:min-w-[160px] min-w-full text-start",
+                    !state.category.query && "text-black"
+                  )}
+                  onClick={() => (isMobile ? router.push("/search/service") : openServices())}
                 >
-                  <Translate value="search" />
-                </Button>
+                  {state.category.query || t("any")}
+                </button>
               </div>
-            )}
+              <Separator isInHeader={isInHeader} />
+              <div className="relative w-full rounded-button border border-gray-link lg:border-none  whitespace-nowrap text-ellipsis overflow-hidden">
+                <span className="absolute  lg:left-0 left-3 top-1/2 -translate-y-1/2">
+                  <LocationIcon />
+                </span>
+                <button
+                  className={clsx(
+                    "lg:pl-6 pl-9 lg:py-2 py-3 text-sm outline-none lg:min-w-[160px] lg:max-w-[200px] min-w-full text-start whitespace-nowrap text-ellipsis overflow-hidden",
+                    !state.location.query && "text-black"
+                  )}
+                  onClick={() => (isMobile ? router.push("/search/location") : openPlaceModal())}
+                >
+                  {state.location.query || t("where")}
+                </button>
+              </div>
+              <Separator isInHeader={isInHeader} />
+              <Popover className="md:relative w-full lg:w-auto">
+                <Popover.Button
+                  ref={setReferenceElement}
+                  onClick={isMobile ? () => router.push("/search/date") : undefined}
+                  className="relative lg:min-w-[160px] flex items-center justify-start w-full lg:w-auto min-w-full rounded-button border border-gray-link lg:border-none outline-none"
+                >
+                  <span className="absolute lg:left-0 left-3  top-1/2 -translate-y-1/2">
+                    <CalendarIcon />
+                  </span>
+                  <span
+                    className={clsx(
+                      "lg:pl-6 pl-9 lg:py-2 py-3 text-sm outline-none",
+                      !state.date.query && "text-black"
+                    )}
+                  >
+                    {state.date.query ? state.date.query : t("date")}
+                  </span>
+                </Popover.Button>
+                {!isMobile &&
+                  isDomReady &&
+                  ReactDOM.createPortal(
+                    <Popover.Panel
+                      ref={setPopperElement}
+                      style={styles.popper}
+                      {...attributes.popper}
+                      unmount
+                      className="z-[9]  md:top-14 md:rounded-button bg-white drop-shadow-xl md:px-5 md:pt-5 pb-5 px-4 pt-20 min-w-full md:min-w-[326px]"
+                    >
+                      {renderDateSelectPanel()}
+                    </Popover.Panel>,
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-expect-error
+                    document.getElementById("portal")
+                  )}
+              </Popover>
+
+              <Separator isInHeader={isInHeader} />
+              <Popover className="md:relative w-full lg:w-auto">
+                <Popover.Button
+                  onClick={isMobile ? () => router.push("/search/time") : undefined}
+                  className="relative lg:min-w-[160px] flex items-center justify-start w-full lg:w-auto min-w-full rounded-button border border-gray-link lg:border-none outline-none"
+                >
+                  <span className="absolute lg:left-0 left-3 top-1/2 -translate-y-1/2">
+                    <ClockIcon />
+                  </span>
+                  <span
+                    className={clsx(
+                      "lg:pl-6 pl-9 lg:py-2 py-3 text-sm  outline-none",
+                      !state.searchTime.time && "text-black"
+                    )}
+                  >
+                    {state.searchTime.time ? (
+                      <span>
+                        {state.searchTime.time.from} - {state.searchTime.time.to}
+                      </span>
+                    ) : (
+                      t("time")
+                    )}
+                  </span>
+                </Popover.Button>
+                {!isMobile && (
+                  <Popover.Panel className="absolute left-0 md:left-auto top-0 md:top-14 md:rounded-button bg-white drop-shadow-xl md:px-5 md:pt-5 pb-5 px-4 pt-20 min-w-full md:min-w-[326px]">
+                    {renderTimeSelectPanel({ withButton })}
+                  </Popover.Panel>
+                )}
+              </Popover>
+              {withButton && (
+                <div className="w-full lg:w-auto">
+                  <Button
+                    fullWidth
+                    onClick={() => handleSearch({ replace: false })}
+                    size="small"
+                    color="primary"
+                    className="rounded-full"
+                  >
+                    <Translate value="search" />
+                  </Button>
+                </div>
+              )}
+            </div>
           </div>
         )}
       </SearchFieldCore>
