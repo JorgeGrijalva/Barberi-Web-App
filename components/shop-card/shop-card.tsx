@@ -40,7 +40,7 @@ export const ShopCard = ({ data }: ShopCardProps) => {
             alt={data.translation?.title || ""}
             width={300}
             height={100}
-            className=" transition-all group-hover:scale-105 h-36 object-cover"
+            className=" transition-all group-hover:scale-105 h-full w-full object-cover"
           />
           <div className="absolute -bottom-5 rounded-full bg-white w-10 h-10 left-6 flex items-center justify-center z-[1]">
             <Image

@@ -2,7 +2,7 @@
 
 import StarSmileIcon from "@/assets/icons/star-smile";
 import { Button } from "@/components/button";
-import { useState } from "react";
+import React from "react";
 import { Rating } from "react-simple-star-rating";
 import { useQuery } from "@tanstack/react-query";
 import { reviewService } from "@/services/review";
@@ -19,7 +19,6 @@ import Image from "next/image";
 import { IconButton } from "@/components/icon-button";
 import TrashIcon from "@/assets/icons/trash";
 import useUserStore from "@/global-store/user";
-import { useSettings } from "@/hook/use-settings";
 
 interface ReviewCreateProps {
   type: string;
@@ -47,12 +46,10 @@ const ReviewCreate = ({
   isProduct = true,
 }: ReviewCreateProps) => {
   const { t } = useTranslation();
-  const { currency } = useSettings();
   const user = useUserStore((state) => state.user);
   const { isLoading, isError, data } = useQuery(["canReview", type, typeId], () =>
-    reviewService.checkCanReview({ type, type_id: typeId, currency_id: currency?.id })
+    reviewService.checkCanReview({ type, type_id: typeId })
   );
-  const [isImageUploading, setIsImageUploading] = useState(false);
   const {
     register,
     setValue,
@@ -97,8 +94,8 @@ const ReviewCreate = ({
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)}>
       <div className="my-4 flex flex-col gap-4">
-        <div className="flex items-center justify-between border border-gray-border dark:border-gray-bold rounded-2xl p-5">
-          <span className="text-sm font-medium">
+        <div className="flex flex-col items-center justify-between border border-gray-border dark:border-gray-bold rounded-2xl p-5">
+          <span className="text-sm font-medium pb-4">
             {t("your.rating")} - {watch("rating") || 0} {t("out.of")} 5
           </span>
           <Rating
@@ -125,7 +122,6 @@ const ReviewCreate = ({
             setValue("images", watch("images") ? [...(watch("images") || []), image] : [image])
           }
           type={ImageTypes.REVIEW}
-          setIsImageUploading={setIsImageUploading}
         >
           {({ handleClick, isLoading: isUploading }) => (
             <div className="flex flex-col gap-4">
@@ -157,13 +153,7 @@ const ReviewCreate = ({
             </div>
           )}
         </ImageUpload>
-        <Button
-          disabled={isImageUploading}
-          leftIcon={buttonIcon}
-          loading={isSubmitting}
-          type="submit"
-          color="black"
-        >
+        <Button leftIcon={buttonIcon} loading={isSubmitting} type="submit" color="primary">
           {t(buttonText)}
         </Button>
       </div>
