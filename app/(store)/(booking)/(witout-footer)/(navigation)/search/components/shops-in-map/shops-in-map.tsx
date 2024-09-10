@@ -24,7 +24,7 @@ export const ShopsInMap = () => {
       setCenter({
         latitude: map.getCenter()?.lat().toString() || "",
         longitude: map.getCenter()?.lng()?.toString() || "",
-        distance: map.getZoom()?.toString() || "12",
+        distance: map.getZoom()?.toString() || "",
       });
   }, [map]);
 
