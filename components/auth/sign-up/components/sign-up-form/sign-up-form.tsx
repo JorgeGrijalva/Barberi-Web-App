@@ -105,6 +105,7 @@ const SignUpForm = ({ onChangeView, onSuccess }: SignUpFormProps) => {
 
               // setPhoneNumber(e);
             }}
+            defaultCountry="MX"
           />
           <div className="flex items-center mt-2.5">
             <input
