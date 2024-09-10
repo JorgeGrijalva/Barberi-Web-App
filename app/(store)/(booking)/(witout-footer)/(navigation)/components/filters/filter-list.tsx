@@ -98,7 +98,7 @@ export const FilterList = ({ onClose }: { onClose?: () => void }) => {
   //     )
   //   : [];
   return (
-    <div className="overscroll-y-none xl:sticky top-2 py-7 max-h-screen">
+    <div className="overscroll-y-none xl:sticky  top-2 py-7 max-h-screen">
       <div className="flex flex-col gap-2">
         <div className="flex items-center justify-between mb-10">
           <h1 className="text-2xl font-medium">

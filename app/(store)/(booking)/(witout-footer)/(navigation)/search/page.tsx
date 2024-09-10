@@ -21,7 +21,9 @@ const SearchPage = () => {
   const { setQueryParams } = useQueryParams({ push: true });
   const isMapMode = searchParams.get("mode") === "map";
   return (
-    <div className={clsx("grid xl:grid-cols-12 grid-cols-5 mx-8 p-4 h-full", isMapMode && "!px-0")}>
+    <div
+      className={clsx("grid xl:grid-cols-12 grid-cols-5 mx-8 p-4 h-full ", isMapMode && "!px-0")}
+    >
       <div
         className={clsx(
           "col-span-5 xl:hidden mt-5 flex items-center justify-center w-full",

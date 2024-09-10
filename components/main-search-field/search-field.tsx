@@ -64,7 +64,7 @@ export const SearchField = ({
     setIsDomReady(true);
   }, []);
   return (
-    <div className={clsx(isInHeader && "hidden xl:block", "w-full relative lg:w-auto z-50 ")}>
+    <div className={clsx(isInHeader && "hidden xl:block", "w-full relative lg:w-auto xl:z-50 ")}>
       <SearchFieldCore>
         {({
           openServices,
