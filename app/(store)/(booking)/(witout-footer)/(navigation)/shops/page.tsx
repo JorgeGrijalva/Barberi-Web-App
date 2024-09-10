@@ -111,7 +111,7 @@ const ShopsPage = () => {
             loadMore={fetchNextPage}
             loading={isFetchingNextPage}
           >
-            <div className="grid grid-cols-3 px-8 xl:gap-7 md:gap-4 gap-2.5 xl:pt-8 pt-0 pb-8">
+            <div className="grid lg:grid-cols-3 grid-cols-1 sm:grid-cols-2 px-8 xl:gap-7 md:gap-4 gap-2.5 xl:pt-8 pt-0 pb-8">
               {shopList?.map((shop) => (
                 <ShopCard data={shop} key={shop.id} />
               ))}
