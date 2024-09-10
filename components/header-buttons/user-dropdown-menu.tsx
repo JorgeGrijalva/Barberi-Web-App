@@ -11,7 +11,7 @@ import {
   // DropdownMenuSubContent,
   // DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/components/ui/DropdownMenu";
+} from "@/components/ui/dropdown-menu";
 import { useAuth } from "@/hook/use-auth";
 
 import {

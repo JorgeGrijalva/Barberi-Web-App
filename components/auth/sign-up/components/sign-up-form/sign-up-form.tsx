@@ -1,7 +1,7 @@
 import { Input } from "@/components/input";
 import Link from "next/link";
 import { Button } from "@/components/button";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
@@ -11,9 +11,11 @@ import { ConfirmationResult } from "@firebase/auth";
 import { error } from "@/components/alert";
 import { useAuth } from "@/hook/use-auth";
 import { authService } from "@/services/auth";
+import { PhoneInput } from "@/components/ui/phone-input";
 
 const schema = yup.object({
-  credential: yup.string().required(),
+  email: yup.string().email(),
+  phone: yup.string(),
   agreed: yup.boolean().required(),
 });
 type FormData = yup.InferType<typeof schema>;
@@ -36,24 +38,24 @@ const SignUpForm = ({ onChangeView, onSuccess }: SignUpFormProps) => {
     resolver: yupResolver(schema),
   });
 
-  const handleCheckCredential = (data: FormData) => {
+  const handleCheckphone = (data: FormData) => {
     setIsSubmitting(true);
-    if (data.credential.includes("@")) {
+    if (data.email?.includes("@")) {
       authService
-        .signUp({ email: data.credential })
+        .signUp({ email: data.email })
         .then(() => {
           onSuccess({
-            credential: data.credential,
+            credential: data.email ?? "",
           });
           onChangeView("VERIFY");
         })
         .catch((err) => error(err.message))
         .finally(() => setIsSubmitting(false));
     } else {
-      phoneNumberSignIn(data.credential)
+      phoneNumberSignIn(data.phone ?? "")
         .then((value) => {
           onSuccess({
-            credential: data.credential,
+            credential: data.phone ?? "",
             callback: value,
           });
           onChangeView("VERIFY");
@@ -67,16 +69,42 @@ const SignUpForm = ({ onChangeView, onSuccess }: SignUpFormProps) => {
     }
   };
 
+  useEffect(() => {
+    // eslint-disable-next-line no-unused-expressions
+    errors.phone && error(t("invalid.phone.or.email"));
+  }, [errors]);
+
   return (
     <div className="flex flex-col gap-6 ">
       <h1 className="font-semibold text-[30px] mb-2 text-start">{t("sign.up")}</h1>
-      <form id="signUp" onSubmit={handleSubmit(handleCheckCredential)}>
+      <form id="signUp" onSubmit={handleSubmit(handleCheckphone)}>
         <div className="flex flex-col gap-3 mb-3 w-full">
+          <label className="text-sm text-gray-500" htmlFor="email">
+            {t("email")}
+          </label>
           <Input
-            {...register("credential")}
-            error={errors.credential?.message}
+            type="email"
+            label={t("email")}
+            error={errors.email?.message}
+            {...register("email")}
             fullWidth
-            label={t("email.or.phone")}
+          />
+          <div className="justify-center flex">
+            <span className="text-sm text-gray-500">{t("or")}</span>
+          </div>
+          <label className="text-sm text-gray-500" htmlFor="phone">
+            {t("phone")}
+          </label>
+          <PhoneInput
+            className="text-black"
+            type="tel"
+            // value={phoneNumber}
+            {...register("phone")}
+            onChange={(e: string) => {
+              console.log(e);
+
+              // setPhoneNumber(e);
+            }}
           />
           <div className="flex items-center mt-2.5">
             <input

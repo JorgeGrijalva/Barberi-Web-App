@@ -378,3 +378,9 @@
   line-height: normal;
   letter-spacing: -0.6px;
 }
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+}
