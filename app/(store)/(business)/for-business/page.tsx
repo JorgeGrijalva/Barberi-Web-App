@@ -107,11 +107,11 @@ const ForBusinessPage = () => (
       </p>
       <div className="bg-gray-bg">
         <div className="xl:container px-4 flex justify-center">
-          <div className="relative w-full -top-[140px] md:h-[700px] h-[205px]">
+          <div className="relative w-full -top-[140px]  md:h-[700px] h-[205px]">
             <Image
               src="/img/manager_dashboard.png"
               alt="dashboard"
-              className="object-contain md:w-4/5 w-full md:!h-full !h-[345px] aspect-[1136/697]"
+              className="object-contain md:w-4/5  w-full md:!h-full !h-[345px] aspect-[1136/697]"
               fill
             />
           </div>

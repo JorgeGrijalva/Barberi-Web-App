@@ -26,7 +26,7 @@ export const Empty = ({ text, imagePath, description, animated = true, smallText
           <AnimatedContent animationData={animationData} />
         ) : (
           <Image
-            src={imagePath || "/img/empty_salon.png"}
+            src={imagePath || "/img/empty_salon.svg"}
             alt="empty_cart"
             className="max-w-[400px]"
             width={300}

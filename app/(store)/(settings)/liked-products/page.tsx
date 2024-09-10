@@ -92,7 +92,7 @@ const LikedSalons = () => {
           <Empty
             animated={false}
             text="empty.favorites"
-            imagePath="/img/empty_salon.png"
+            imagePath="/img/empty_salon.svg"
             description="add.your.favorite.salons"
           />
         </div>
