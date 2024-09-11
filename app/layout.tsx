@@ -1,3 +1,4 @@
+// @ts-nocheck
 import "swiper/css";
 import "remixicon/fonts/remixicon.css";
 import "./globals.css";
@@ -5,7 +6,7 @@ import { Inter } from "next/font/google";
 import { Metadata } from "next";
 import { parseSettings } from "@/utils/parse-settings";
 import { cookies } from "next/headers";
-import React from "react";
+import React, { use, useEffect } from "react";
 import clsx from "clsx";
 import { globalService } from "@/services/global";
 import { CountrySelect } from "@/components/country-select";
@@ -13,6 +14,7 @@ import NextTopLoader from "nextjs-toploader";
 import { cityService, countryService } from "@/services/country";
 import ThemeProvider from "./theme-provider";
 import Providers from "./providers";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin", "cyrillic"] });
 
@@ -75,6 +77,23 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
       });
   }
 
+  useEffect(() => {
+    (function(d,t) {
+      var BASE_URL="https://chat.barberi.app";
+      var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      g.src=BASE_URL+"/packs/js/sdk.js";
+      g.defer = true;
+      g.async = true;
+      s.parentNode.insertBefore(g,s);
+      g.onload=function(){
+        window.chatwootSDK.run({
+          websiteToken: 'znbNkogMdSJB4vmt7FDzDKgS',
+          baseUrl: BASE_URL
+        })
+      }
+    })(document,"script");
+  }, []);
+
   return (
     <html
       lang={selectedLocale || defaultLanguage?.locale || "en"}
@@ -93,6 +112,10 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
           >
             {children}
             <CountrySelect settings={parsedSettings} />
+            
+
+    
+            
           </Providers>
           <NextTopLoader color="#0040ff" showSpinner={false} />
         </ThemeProvider>
