@@ -10,11 +10,21 @@ module.exports = {
       animation: {
         "infinite-scroll": "infinite-scroll 25s linear infinite",
         "infinite-scroll-2": "infinite-scroll 35s linear infinite",
+        "fade-in": "fade-in 1000ms var(--animation-delay, 0ms) ease forwards",
+        "fade-up": "fade-up 1000ms var(--animation-delay, 0ms) ease forwards",
       },
       keyframes: {
         "infinite-scroll": {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(-100%)" },
+        },
+        "fade-in": {
+          from: { opacity: "0", transform: "translateY(-10px)" },
+          to: { opacity: "1", transform: "none" },
+        },
+        "fade-up": {
+          from: { opacity: "0", transform: "translateY(20px)" },
+          to: { opacity: "1", transform: "none" },
         },
       },
       backgroundImage: {
