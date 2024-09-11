@@ -15,7 +15,7 @@ const ChatbotScript = () => {
       g.defer = true;
       g.async = true;
       s.parentNode.insertBefore(g, s);
-      g.onload = function () {
+      g.onload = () => {
         window.chatwootSDK.run({
           websiteToken: "znbNkogMdSJB4vmt7FDzDKgS",
           baseUrl: BASE_URL,
