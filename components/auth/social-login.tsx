@@ -1,7 +1,7 @@
 "use client";
 
-import AppleIcon from "@/assets/icons/apple";
-import FacebookIcon from "@/assets/icons/facebook";
+// import AppleIcon from "@/assets/icons/apple";
+// import FacebookIcon from "@/assets/icons/facebook";
 import GoogleIcon from "@/assets/icons/google";
 import { useAuth } from "@/hook/use-auth";
 import useUserStore from "@/global-store/user";
@@ -100,7 +100,7 @@ const SocialLogin = ({ redirectOnSuccess }: SocialLoginProps) => {
         >
           <GoogleIcon />
         </button>
-        <button
+        {/* <button
           type="button"
           className="border border-gray-link flex items-center justify-center flex-1 py-3 rounded-button disabled:bg-gray-bg hover:bg-gray-bg"
           onClick={() => handleSocialLogin("facebook")}
@@ -116,7 +116,7 @@ const SocialLogin = ({ redirectOnSuccess }: SocialLoginProps) => {
           disabled={loading}
         >
           <AppleIcon />
-        </button>
+        </button> */}
       </div>
       <div className="flex items-center gap-2.5">
         <div className="h-px bg-gray-link flex-1" />
