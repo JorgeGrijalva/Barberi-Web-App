@@ -36,7 +36,7 @@ export const UserDropdownMenu = ({ children }: { children: React.ReactNode }) =>
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
-        <button className=" w-16 bg-zinc-300/80 backdrop-blur-2xl rounded-full items-center  flex  cursor-pointer pr-2">
+        <button className=" w-16 bg-zinc-200/80 backdrop-blur-2xl rounded-full items-center  flex  cursor-pointer pr-2">
           {children}
           <ChevronDown className="h-4 w-4 pl-1" />
         </button>
