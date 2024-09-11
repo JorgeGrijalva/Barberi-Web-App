@@ -106,7 +106,7 @@ export const CheckoutPickupForm = () => {
                   <div className="flex flex-col">
                     <span className="text-base font-medium">{point.translation?.title}</span>
                     <span className="text-sm text-gray-field line-clamp-1">
-                      {point.address?.[language?.locale || "en"]}
+                      {point.address?.[language?.locale || "es"]}
                     </span>
                   </div>
                 </div>

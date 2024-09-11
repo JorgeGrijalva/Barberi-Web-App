@@ -48,7 +48,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
   const currencies = await globalService
     .currencies()
     .catch((e) => console.log("currency error", e));
-  const selectedLocale = cookies().get("lang")?.value || "en";
+  const selectedLocale = cookies().get("lang")?.value || "es";
   const selectedDirection = cookies().get("dir")?.value;
 
   const defaultLanguage = languages?.data?.find((lang) => Boolean(lang?.default));
@@ -78,7 +78,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
 
   return (
     <html
-      lang={selectedLocale || defaultLanguage?.locale || "en"}
+      lang={selectedLocale || defaultLanguage?.locale || "es"}
       dir={selectedDirection || (defaultLanguage?.backward ? "rtl" : "ltr")}
     >
       <body className={clsx(inter.className, "overflow-x-hidden w-screen")}>

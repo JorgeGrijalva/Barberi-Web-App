@@ -19,7 +19,7 @@ i18n
   .init({
     debug: false,
     ns: "translation",
-    fallbackLng: getCookie("lang")?.toString() || "en",
+    fallbackLng: getCookie("lang")?.toString() || "es",
     defaultNS: "translation",
     react: {
       useSuspense: true,

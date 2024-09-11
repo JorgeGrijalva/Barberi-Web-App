@@ -31,7 +31,7 @@ import NetworkError from "@/utils/network-error";
 import dynamic from "next/dynamic";
 import { useSettings } from "@/hook/use-settings";
 
-const lang = (getCookie("locale") as string) || "en";
+const lang = (getCookie("locale") as string) || "es";
 
 const Map = dynamic(() =>
   import("@/components/map").then((component) => ({ default: component.Map }))

@@ -268,7 +268,7 @@ export const BookingTotal = ({
       {!!state.time && (
         <div className="hidden lg:block border-b border-gray-link py-4">
           <p className="text-xl font-semibold">
-            {new Date(state.date || "").toLocaleDateString(language?.locale || "en", {
+            {new Date(state.date || "").toLocaleDateString(language?.locale || "es", {
               day: "numeric",
               month: "long",
               year: "numeric",

@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 const GlobalError = () => {
   const { t } = useTranslation();
   return (
-    <html lang="en">
+    <html lang="es">
       <body>
         <div className="container mx-auto px-4">
           <section className="py-8 px-4 text-center">

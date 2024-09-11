@@ -67,7 +67,7 @@ const userImages = [
 ];
 
 const HomePage = async () => {
-  const lang = cookies().get("lang")?.value || "en";
+  const lang = cookies().get("lang")?.value || "es";
   const countryId = cookies().get("country_id")?.value || undefined;
   const cityId = cookies().get("city_id")?.value || undefined;
   const services = await categoryService.getAll({
