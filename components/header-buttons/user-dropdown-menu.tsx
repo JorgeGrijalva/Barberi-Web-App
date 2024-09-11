@@ -4,31 +4,22 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  // DropdownMenuPortal,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
-  // DropdownMenuSub,
-  // DropdownMenuSubContent,
-  // DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useAuth } from "@/hook/use-auth";
 
 import {
+  ChevronDown,
   Cloud,
   CreditCard,
   LifeBuoy,
   LogOut,
-  // Mail,
-  // MessageSquare,
-  // Plus,
-  // PlusCircle,
   Settings,
   TicketCheck,
   User,
   Wallet,
-  // UserPlus,
-  // Users,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -44,8 +35,13 @@ export const UserDropdownMenu = ({ children }: { children: React.ReactNode }) =>
 
   return (
     <DropdownMenu modal={false}>
-      <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56 bg-zinc-100/20 backdrop-blur-xl">
+      <DropdownMenuTrigger asChild>
+        <button className=" w-16 bg-zinc-300/80 backdrop-blur-2xl rounded-full items-center  flex  cursor-pointer pr-2">
+          {children}
+          <ChevronDown className="h-4 w-4 pl-1" />
+        </button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-56 bg-zinc-100/20 backdrop-blur-xl mx-4">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
@@ -124,11 +120,11 @@ export const UserDropdownMenu = ({ children }: { children: React.ReactNode }) =>
         <DropdownMenuSeparator /> */}
         <DropdownMenuItem
           onClick={() => {
-            router.push("/billing");
+            router.push("/faq");
           }}
         >
           <CreditCard className="mr-2 h-4 w-4" />
-          <span>Billing</span>
+          <span>Faq</span>
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => {

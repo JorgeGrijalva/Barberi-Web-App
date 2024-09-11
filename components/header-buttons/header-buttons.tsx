@@ -83,9 +83,9 @@ export const HeaderButtons = ({ canOpenDrawer, showBusinessButton = true }: Head
         <NotificationCenter />
       </div>
       <UserDropdownMenu>
-        <button>
+        <div>
           {profile?.data?.img && !!user ? (
-            <div className="relative w-10 h-10 z-[-1]">
+            <div className="relative w-10 h-10 z-[1]">
               <Image
                 src={profile?.data?.img}
                 alt="profile"
@@ -99,7 +99,7 @@ export const HeaderButtons = ({ canOpenDrawer, showBusinessButton = true }: Head
               size={40}
             />
           )}
-        </button>
+        </div>
       </UserDropdownMenu>
       {isMobile && canOpenDrawer && (
         <Drawer open={isSidebarOpen} onClose={closeSidebar} position="right">

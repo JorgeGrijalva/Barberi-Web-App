@@ -29,6 +29,7 @@ const SignUpForm = ({ onChangeView, onSuccess }: SignUpFormProps) => {
   const { t } = useTranslation();
   const { phoneNumberSignIn } = useAuth();
   const [isSubmitting, setIsSubmitting] = useState(false);
+
   const {
     register,
     formState: { errors },
