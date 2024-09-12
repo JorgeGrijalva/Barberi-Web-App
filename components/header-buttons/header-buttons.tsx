@@ -18,7 +18,7 @@ import { LoadingCard } from "@/components/loading";
 import { Drawer } from "@/components/drawer";
 import { useModal } from "@/hook/use-modal";
 import { useMediaQuery } from "@/hook/use-media-query";
-import CartIndicator from "../cart-indicator";
+// import CartIndicator from "../cart-indicator";
 import { UserDropdownMenu } from "./user-dropdown-menu";
 
 const Sidebar = dynamic(() => import("../profile-sidebar"), {
@@ -74,7 +74,7 @@ export const HeaderButtons = ({ canOpenDrawer, showBusinessButton = true }: Head
   return (
     <div className="flex items-center gap-5 relative z-[4]">
       <div className="lg:flex items-center hidden gap-5">
-        <CartIndicator />
+        {/* <CartIndicator /> */}
         {showBusinessButton && (
           <Button size="small" color="blackOutlined" as={Link} href="/for-business">
             <Translate value="for.business" />
