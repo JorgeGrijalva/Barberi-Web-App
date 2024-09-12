@@ -46,7 +46,7 @@ export const HeaderButtons = ({ canOpenDrawer, showBusinessButton = true }: Head
     return (
       <div className="relative z-[4]">
         <div className="items-center gap-5 lg:flex hidden">
-          { <CartIndicator />}
+          {/* <CartIndicator /> */}
           {showBusinessButton && (
             <Button as={Link} href="/for-business" size="small" color="blackOutlined">
               <Translate value="for.business" />
