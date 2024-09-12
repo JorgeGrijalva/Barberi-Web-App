@@ -14,7 +14,6 @@ import {
 import { useAuth } from "@/hook/use-auth";
 import {
   ChevronDown,
-  Cloud,
   CreditCard,
   LifeBuoy,
   LogOut,
@@ -25,8 +24,25 @@ import {
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-export const UserDropdownMenu = ({ children }: { children: React.ReactNode }) => {
+interface MenuItemProps {
+  icon: React.ElementType;
+  label: string;
+  route: string;
+  shortcut?: string;
+}
+
+const MenuItem = ({ icon: Icon, label, route, shortcut }: MenuItemProps) => {
   const router = useRouter();
+  return (
+    <DropdownMenuItem onClick={() => router.push(route)}>
+      <Icon className="mr-2 h-4 w-4" />
+      <Translate value={label} />
+      {shortcut && <DropdownMenuShortcut>{shortcut}</DropdownMenuShortcut>}
+    </DropdownMenuItem>
+  );
+};
+
+export const UserDropdownMenu = ({ children }: { children: React.ReactNode }) => {
   const { logOut } = useAuth();
 
   const handleLogout = async () => {
@@ -43,14 +59,6 @@ export const UserDropdownMenu = ({ children }: { children: React.ReactNode }) =>
     { icon: LifeBuoy, label: "support", route: "/hotline" },
   ];
 
-  const MenuItem = ({ icon: Icon, label, route, shortcut }: any) => (
-    <DropdownMenuItem onClick={() => router.push(route)}>
-      <Icon className="mr-2 h-4 w-4" />
-      <Translate value={label} />
-      {shortcut && <DropdownMenuShortcut>{shortcut}</DropdownMenuShortcut>}
-    </DropdownMenuItem>
-  );
-
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
@@ -65,14 +73,14 @@ export const UserDropdownMenu = ({ children }: { children: React.ReactNode }) =>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          {menuItems.slice(0, 4).map((item, index) => (
-            <MenuItem key={index} {...item} />
+          {menuItems.slice(0, 4).map((item) => (
+            <MenuItem key={item.route} {...item} />
           ))}
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          {menuItems.slice(4).map((item, index) => (
-            <MenuItem key={index} {...item} />
+          {menuItems.slice(4).map((item) => (
+            <MenuItem key={item.route} {...item} />
           ))}
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
