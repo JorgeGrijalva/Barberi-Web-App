@@ -23,6 +23,7 @@ import {
   Wallet,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import React from "react";
 
 interface MenuItemProps {
   icon: React.ElementType;
@@ -50,13 +51,42 @@ export const UserDropdownMenu = ({ children }: { children: React.ReactNode }) =>
   };
 
   const menuItems = [
-    { icon: User, label: "profile", route: "/profile", shortcut: "⇧⌘P" },
-    { icon: Wallet, label: "wallet", route: "/wallet", shortcut: "⌘B" },
+    { icon: User, label: "profile", route: "/profile", shortcut: "⌘P" },
+    { icon: Wallet, label: "wallet", route: "/wallet", shortcut: "⌘w" },
     { icon: Settings, label: "settings", route: "/settings", shortcut: "⌘S" },
     { icon: TicketCheck, label: "my.appointments", route: "/appointments", shortcut: "⌘K" },
     { icon: CreditCard, label: "contact.us", route: "/faq" },
-    { icon: LifeBuoy, label: "support", route: "/hotline" },
+    { icon: LifeBuoy, label: "support", route: "/hotline", shortcut: "⌘H" },
   ];
+
+  React.useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === "h" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        router.push("/hotline");
+      }
+      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        router.push("/appointments");
+      }
+      if (e.key === "p" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        router.push("/profile");
+      }
+      if (e.key === "s" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        router.push("/settings");
+      }
+      if (e.key === "w" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        router.push("/wallet");
+      }
+    };
+
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <DropdownMenu modal={false}>
