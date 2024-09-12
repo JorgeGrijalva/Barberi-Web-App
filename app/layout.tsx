@@ -18,6 +18,10 @@ import Providers from "./providers";
 const inter = Inter({ subsets: ["latin", "cyrillic"] });
 
 export const generateMetadata = async (): Promise<Metadata> => {
+  const APP_NAME = "Barberi App";
+  const APP_DEFAULT_TITLE = "Barberi";
+  const APP_TITLE_TEMPLATE = "Barberi App";
+  const APP_DESCRIPTION = "Barberi App Corte a tu Medida";
   const settings = await globalService.settings().catch((e) => console.log(e));
   const parsedSettings = parseSettings(settings?.data);
   return {
@@ -27,7 +31,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
       default: parsedSettings.title,
     },
     icons: parsedSettings.favicon,
-    description: "Book beauty services in your city",
+    description: "Book beauty, health and stylish services in your city",
     openGraph: {
       images: [
         {
@@ -37,8 +41,27 @@ export const generateMetadata = async (): Promise<Metadata> => {
         },
       ],
       title: parsedSettings.title,
-      description: "Book beauty services in your city",
+      description: "Book beauty, health and stylish services in your city",
       siteName: parsedSettings.title,
+    },
+    applicationName: APP_NAME,
+    manifest: "/manifest.json",
+    appleWebApp: {
+      capable: true,
+      statusBarStyle: "default",
+      title: APP_DEFAULT_TITLE,
+      // startUpImage: [],
+    },
+    formatDetection: {
+      telephone: false,
+    },
+    twitter: {
+      card: "summary",
+      title: {
+        default: APP_DEFAULT_TITLE,
+        template: APP_TITLE_TEMPLATE,
+      },
+      description: APP_DESCRIPTION,
     },
   };
 };

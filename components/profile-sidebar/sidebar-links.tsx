@@ -1,6 +1,6 @@
 import HeartIcon from "@/assets/icons/heart";
 import InfoIcon from "@/assets/icons/info";
-//import ListIcon from "@/assets/icons/list";
+// import ListIcon from "@/assets/icons/list";
 import MessageIcon from "@/assets/icons/message";
 import OperatorIcon from "@/assets/icons/operator";
 import ProfileIcon from "@/assets/icons/profile";
