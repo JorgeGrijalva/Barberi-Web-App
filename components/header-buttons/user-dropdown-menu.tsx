@@ -52,7 +52,7 @@ export const UserDropdownMenu = ({ children }: { children: React.ReactNode }) =>
 
   const menuItems = [
     { icon: User, label: "profile", route: "/profile", shortcut: "⌘P" },
-    { icon: Wallet, label: "wallet", route: "/wallet", shortcut: "⌘w" },
+    { icon: Wallet, label: "wallet", route: "/wallet", shortcut: "⌘B" },
     { icon: Settings, label: "settings", route: "/settings", shortcut: "⌘S" },
     { icon: TicketCheck, label: "my.appointments", route: "/appointments", shortcut: "⌘K" },
     { icon: CreditCard, label: "contact.us", route: "/faq" },
@@ -77,9 +77,13 @@ export const UserDropdownMenu = ({ children }: { children: React.ReactNode }) =>
         e.preventDefault();
         router.push("/settings");
       }
-      if (e.key === "w" && (e.metaKey || e.ctrlKey)) {
+      if (e.key === "b" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
         router.push("/wallet");
+      }
+      if (e.key === "q" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        handleLogout();
       }
     };
 
