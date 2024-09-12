@@ -6,7 +6,7 @@ const robots = (): MetadataRoute.Robots => ({
     allow: "/",
     disallow: "/country-select/",
   },
-  sitemap: "https://uzmart.org/sitemap.xml",
+  sitemap: "https://barberi.app/sitemap.xml",
 });
 
 export default robots;
