@@ -29,20 +29,19 @@ interface MenuItemProps {
   label: string;
   route: string;
   shortcut?: string;
+  router: ReturnType<typeof useRouter>;
 }
 
-const MenuItem = ({ icon: Icon, label, route, shortcut }: MenuItemProps) => {
-  const router = useRouter();
-  return (
-    <DropdownMenuItem onClick={() => router.push(route)}>
-      <Icon className="mr-2 h-4 w-4" />
-      <Translate value={label} />
-      {shortcut && <DropdownMenuShortcut>{shortcut}</DropdownMenuShortcut>}
-    </DropdownMenuItem>
-  );
-};
+const MenuItem = ({ icon: Icon, label, route, shortcut, router }: MenuItemProps) => (
+  <DropdownMenuItem onClick={() => router.push(route)}>
+    <Icon className="mr-2 h-4 w-4" />
+    <Translate value={label} />
+    {shortcut && <DropdownMenuShortcut>{shortcut}</DropdownMenuShortcut>}
+  </DropdownMenuItem>
+);
 
 export const UserDropdownMenu = ({ children }: { children: React.ReactNode }) => {
+  const router = useRouter();
   const { logOut } = useAuth();
 
   const handleLogout = async () => {
@@ -74,13 +73,13 @@ export const UserDropdownMenu = ({ children }: { children: React.ReactNode }) =>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           {menuItems.slice(0, 4).map((item) => (
-            <MenuItem key={item.route} {...item} />
+            <MenuItem key={item.route} {...item} router={router} />
           ))}
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           {menuItems.slice(4).map((item) => (
-            <MenuItem key={item.route} {...item} />
+            <MenuItem key={item.route} {...item} router={router} />
           ))}
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
