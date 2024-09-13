@@ -184,7 +184,7 @@ const HomePage = async () => {
           <Masters />
         </section>
         {!!stories?.length && (
-          <section className="my-10 bg-stories-bg bg-no-repeat bg-cover">
+          <section className="my-10 bg-no-repeat bg-cover">
             <div className="flex items-center pt-12 pb-9 flex-col">
               <div className="text-4xl font-semibold">
                 <Translate value="stories.widget" />

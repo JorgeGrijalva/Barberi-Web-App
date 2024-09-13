@@ -36,7 +36,7 @@ export const StoryBubble = ({
           !isPost && "md:w-32 md:h-32 h-24 w-24"
         }`}
       >
-        <div className="w-full h-full bg-white dark:bg-darkBg rounded-full overflow-hidden relative">
+        <div className="w-full h-full  rounded-full overflow-hidden relative">
           <Image
             src={stories?.[0]?.logo_img || ""}
             alt={stories?.[0].product_title || ""}
