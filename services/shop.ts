@@ -19,6 +19,7 @@ export const shopService = {
     }),
   gallery: (slug?: string) =>
     fetcher<DefaultResponse<ShopGallery>>(`v1/rest/shops/slug/${slug}/galleries`, {
+      cache: "no-cache",
       redirectOnError: true,
     }),
   getByIds: (params?: ParamsType) =>
