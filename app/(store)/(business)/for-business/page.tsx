@@ -5,10 +5,12 @@ import BellOutlinedIcon from "@/assets/icons/bell-outlined";
 import { Translate } from "@/components/translate";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import React, { Suspense } from "react";
+import React from "react";
+import storyService from "@/services/story";
+import { cookies } from "next/headers";
 import { TopHeader } from "../components/top-header";
 import { AppList } from "../components/app-list";
-import { Brands } from "../components/brands";
+// import { Brands } from "../components/brands";
 
 const Services = dynamic(
   () =>
@@ -29,6 +31,25 @@ const Services = dynamic(
   }
 );
 
+const Stories = dynamic(() => import("@/app/(store)/(booking)/components/stories"), {
+  ssr: false,
+  loading: () => (
+    <div className=" mt-10">
+      <div className="flex lg:gap-7 sm:gap-4 gap-2.5 animate-pulse overflow-x-hidden flex-nowrap">
+        {Array.from(Array(8).keys()).map((item) => (
+          <div className="bg-gray-300 rounded-button min-w-[170px]  h-80" key={item} />
+        ))}
+      </div>
+    </div>
+  ),
+});
+
+const StoriesComponent = async () => {
+  const lang = cookies().get("lang")?.value || "es";
+  const stories = await storyService.getAll({ lang });
+
+  return <Stories data={stories} />;
+};
 const features = [
   {
     icon: <CalendarCheckIcon size={40} />,
@@ -136,23 +157,24 @@ const ForBusinessPage = () => (
       </p>
       <div className="xl:container px-4 grid md:grid-cols-2">
         <AppList />
-        <div className="relative aspect-square md:-left-40 left-0 md:scale-125">
+        <div className="relative aspect-square left-0 md:scale-150">
           <Image src="/img/mobile_app.png" alt="mobile_app" fill className="object-contain" />
         </div>
       </div>
     </section>
     <section className="md:py-24 py-14">
-      <h3 className="md:text-5xl text-3xl font-semibold text-center mb-10 break-words">
+      <h3 className="md:text-5xl text-3xl font-semibold px-8  text-center  break-words">
         <Translate value="fastest.growing.companies" />
       </h3>
 
-      <div className="flex flex-col md:gap-7 gap-3">
-        <Suspense fallback="Loading...">
+      <div className="flex flex-col xl:container px-16 md:px-8 mt-16 md:gap-7 gap-3">
+        {/* <Suspense fallback="Loading...">
           <Brands />
         </Suspense>
         <Suspense fallback="Loading...">
           <Brands reverse slower />
-        </Suspense>
+        </Suspense> */}
+        <StoriesComponent />
       </div>
     </section>
     <section className="md:py-24 py-14 bg-gray-bg md:mb-24 mb-14">

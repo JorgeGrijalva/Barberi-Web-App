@@ -11,6 +11,7 @@ import storyService from "@/services/story";
 import { MobileCard } from "@/app/(store)/(booking)/components/mobile-card";
 import { SearchField } from "@/components/main-search-field";
 import { Header } from "@/components/header";
+import AnimationBackground from "@/components/animationContext/AnimationContex";
 // import { SlidableProductList } from "@/components/slidable-product-list";
 // import { Brands } from "./components/brands";
 
@@ -158,21 +159,12 @@ const HomePage = async () => {
   const stories = await storyService.getAll({ lang });
   return (
     <div className="overflow-x-hidden w-screen">
-      <div className="overflow-x-hidden">
-        <div className="relative ">
-          <div
-            aria-hidden="true"
-            className="absolute left-[calc(50%-36rem)] top-10 -z-10 transform-gpu blur-3xl sm:left-[calc(50%-18rem)] xl:left-[calc(50%-24rem)]"
-          >
-            <div
-              style={{
-                clipPath:
-                  "polygon(73.6% 51.7%, 91.7% 11.8%, 100% 46.4%, 97.4% 82.2%, 92.5% 84.9%, 75.7% 64%, 55.3% 47.5%, 46.5% 49.4%, 45% 62.9%, 50.3% 87.2%, 21.3% 64.1%, 0.1% 100%, 5.4% 51.1%, 21.4% 63.9%, 58.9% 0.2%, 73.6% 51.7%)",
-              }}
-              className="aspect-[1108/632] w-[69.25rem] bg-gradient-to-r from-[#0033FF] to-[#0033FF] opacity-20"
-            />
-          </div>
+      <div className="">
+        <div className="relative">
+          <AnimationBackground />
         </div>
+      </div>
+      <div>
         <Header showLinks settings={parsedSettings} />
         <section className="flex justify-center items-center flex-col my-32 px-4 md:px-8 lg:px-0">
           <h1 className="md:text-[65px] text-3xl font-semibold text-center my-10">
@@ -186,14 +178,13 @@ const HomePage = async () => {
           <Services data={services} />
         </section>
       </div>
-
       <main>
         <section className="mb-16">
           <Recommended data={recommendedShops} />
           <Masters />
         </section>
         {!!stories?.length && (
-          <section className="my-10 bg-stories-bg bg-no-repeat bg-cover">
+          <section className="my-10 bg-no-repeat bg-cover">
             <div className="flex items-center pt-12 pb-9 flex-col">
               <div className="text-4xl font-semibold">
                 <Translate value="stories.widget" />

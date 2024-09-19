@@ -20,7 +20,8 @@ export const StoryBubbleUi1 = ({ stories, isPost, storyIndex }: StoryBubbleProps
 
   return (
     <button
-      className="aspect-[1/2] rounded-button relative overflow-hidden w-[173px]"
+      // group classname with tailwind group
+      className="group aspect-[1/2] rounded-button relative overflow-hidden w-[173px]"
       onClick={!isPost ? handleClick : () => null}
     >
       <div className="absolute z-[1] top-1 left-2.5 right-2.5">
@@ -29,14 +30,13 @@ export const StoryBubbleUi1 = ({ stories, isPost, storyIndex }: StoryBubbleProps
             <div className="h-px flex-1 bg-white rounded-full shadow-storeCard" key={item} />
           ))}
         </div>
-        <div className="w-10 h-10 rounded-button border border-white flex items-center justify-center mt-1 bg-white bg-opacity-60">
+        <div className="w-12 h-12  group-hover:border-primary transition duration-500 border-2 rounded-[50%] border-transparent flex items-center justify-center mt-1 ">
           <Image
             src={stories?.[0]?.logo_img || ""}
             alt="story"
-            width={28}
-            height={28}
-            quality={100}
-            className="rounded-full w-7 h-7 object-cover"
+            width={100}
+            height={100}
+            className="rounded-full w-12 h-12 object-cover"
           />
         </div>
       </div>
