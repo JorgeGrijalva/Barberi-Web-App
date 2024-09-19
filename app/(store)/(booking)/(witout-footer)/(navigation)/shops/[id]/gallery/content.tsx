@@ -1,12 +1,12 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import clsx from "clsx";
 import { ImageWithFallBack } from "@/components/image";
 import { ProductGallery } from "@/types/product";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface GalleryContentProps {
   images?: ProductGallery[];
@@ -31,7 +31,7 @@ export const GalleryContent = ({ images }: GalleryContentProps) => {
     <div className="grid grid-cols-6 xl:gap-7 md:gap-4 gap-2 pb-7">
       {images?.map((galleryItem, i) => (
         <div
-          className={clsx(
+          className={cn(
             "relative rounded-button overflow-hidden",
             i % 4 === 0 && "col-span-4 row-span-2 aspect-[881/564]",
             i % 4 === 1 && "col-span-2 row-span-2",
