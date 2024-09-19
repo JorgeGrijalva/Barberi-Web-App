@@ -1,12 +1,12 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ImageWithFallBack } from "@/components/image";
 import { ProductGallery } from "@/types/product";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 interface GalleryContentProps {
   images?: ProductGallery[];
@@ -47,7 +47,7 @@ export const GalleryContent = ({ images }: GalleryContentProps) => {
             }}
             className="w-full h-full"
           >
-            <ImageWithFallBack
+            <Image
               src={galleryItem.preview || galleryItem.path}
               alt={galleryItem.title}
               fill
@@ -78,7 +78,7 @@ export const GalleryContent = ({ images }: GalleryContentProps) => {
             </Button>
             {imageList && (
               <div className="w-full h-full flex items-center justify-center">
-                <ImageWithFallBack
+                <Image
                   src={imageList[currentIndex]}
                   alt={`Image ${currentIndex + 1}`}
                   fill
