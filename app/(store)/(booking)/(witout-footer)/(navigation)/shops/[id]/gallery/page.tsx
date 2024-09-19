@@ -1,6 +1,6 @@
 import { shopService } from "@/services/shop";
 import { BackButton } from "@/components/back-button";
-import { GalleryContent } from "./content";
+import GalleryContent from "./content";
 
 const ShopGallery = async ({ params }: { params: { id: string } }) => {
   const gallery = await shopService.gellery(params.id);

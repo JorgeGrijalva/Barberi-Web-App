@@ -12,7 +12,7 @@ interface GalleryContentProps {
   images?: ProductGallery[];
 }
 
-export const GalleryContent = ({ images }: GalleryContentProps) => {
+const GalleryContent = ({ images }: GalleryContentProps) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const imageList = useMemo(() => images?.map((image) => image.preview || image.path), [images]);
@@ -92,3 +92,5 @@ export const GalleryContent = ({ images }: GalleryContentProps) => {
     </div>
   );
 };
+
+export default GalleryContent;
