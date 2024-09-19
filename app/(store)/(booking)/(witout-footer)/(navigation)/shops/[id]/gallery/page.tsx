@@ -4,6 +4,7 @@ import GalleryContent from "./content";
 
 const ShopGallery = async ({ params }: { params: { id: string } }) => {
   const gallery = await shopService.gellery(params.id);
+  console.log(params.id);
 
   return (
     <section className="xl:container px-2 py-7 lg:py-0">
