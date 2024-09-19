@@ -1,21 +1,31 @@
 "use client";
 
-import { useModal } from "@/hook/use-modal";
 import { useMemo, useState } from "react";
 import clsx from "clsx";
 import { ImageWithFallBack } from "@/components/image";
 import { ProductGallery } from "@/types/product";
-import Lightbox from "react-image-lightbox";
-import "react-image-lightbox/style.css";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface GalleryContentProps {
   images?: ProductGallery[];
 }
 
 export const GalleryContent = ({ images }: GalleryContentProps) => {
-  const [isFullScreen, openFullScreen, closeFullScreen] = useModal();
+  const [isOpenModal, setIsOpenModal] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const imageList = useMemo(() => images?.map((image) => image.preview || image.path), [images]);
+
+  const handlePrevious = () => {
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + (imageList?.length ?? 0)) % (imageList?.length ?? 0)
+    );
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % (imageList?.length ?? 0));
+  };
 
   return (
     <div className="grid grid-cols-6 xl:gap-7 md:gap-4 gap-2 pb-7">
@@ -32,9 +42,10 @@ export const GalleryContent = ({ images }: GalleryContentProps) => {
         >
           <button
             onClick={() => {
-              openFullScreen();
               setCurrentIndex(i);
+              setIsOpenModal(true);
             }}
+            className="w-full h-full"
           >
             <ImageWithFallBack
               src={galleryItem.preview || galleryItem.path}
@@ -46,18 +57,38 @@ export const GalleryContent = ({ images }: GalleryContentProps) => {
         </div>
       ))}
 
-      {isFullScreen && imageList && (
-        <Lightbox
-          mainSrc={imageList[currentIndex]}
-          nextSrc={imageList[(currentIndex + 1) % imageList.length]}
-          prevSrc={imageList[(currentIndex + imageList.length - 1) % imageList.length]}
-          onCloseRequest={closeFullScreen}
-          onMovePrevRequest={() =>
-            setCurrentIndex((currentIndex + imageList.length - 1) % imageList.length)
-          }
-          onMoveNextRequest={() => setCurrentIndex((currentIndex + 1) % imageList.length)}
-        />
-      )}
+      <Dialog open={isOpenModal} onOpenChange={setIsOpenModal}>
+        <DialogContent className="max-w-7xl  h-[80vh] w-[90%]">
+          <div className="relative w-full h-full flex items-center justify-center bg-background/80 backdrop-blur-sm">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute z-50 left-2 top-1/2 -translate-y-1/2"
+              onClick={handlePrevious}
+            >
+              <ChevronLeft className="h-4 w-4 text-blue-500" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute z-50 right-2 top-1/2 -translate-y-1/2"
+              onClick={handleNext}
+            >
+              <ChevronRight className="h-4 w-4 text-blue-500" />
+            </Button>
+            {imageList && (
+              <div className="w-full h-full flex items-center justify-center">
+                <ImageWithFallBack
+                  src={imageList[currentIndex]}
+                  alt={`Image ${currentIndex + 1}`}
+                  fill
+                  className="object-contain"
+                />
+              </div>
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
