@@ -17,7 +17,7 @@ export const shopService = {
       cache: "no-store",
       redirectOnError: true,
     }),
-  gellery: (slug?: string) =>
+  gallery: (slug?: string) =>
     fetcher<DefaultResponse<ShopGallery>>(`v1/rest/shops/slug/${slug}/galleries`, {
       redirectOnError: true,
     }),

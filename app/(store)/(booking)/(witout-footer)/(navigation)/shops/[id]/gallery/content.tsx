@@ -7,13 +7,16 @@ import { ProductGallery } from "@/types/product";
 // import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { DefaultResponse } from "@/types/global";
+import { ShopGallery } from "@/types/shop";
 
 interface GalleryContentProps {
   images?: ProductGallery[];
+  gallery: DefaultResponse<ShopGallery>;
 }
 
-const GalleryContent = ({ images }: GalleryContentProps) => {
-  console.log(images);
+const GalleryContent = ({ images, gallery }: GalleryContentProps) => {
+  console.log(images, gallery);
   return (
     <div className="grid grid-cols-6 xl:gap-7 md:gap-4 gap-2 pb-7">
       {images?.map((galleryItem, i) => (
