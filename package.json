@@ -7,14 +7,15 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky install",
+    "prepare": "husky",
     "eslint:fix": "eslint --fix \"**/*.+(js|jsx|ts|tsx)\"",
     "prettier": "prettier --check \"**/*.+(js|jsx|ts|tsx|json|yml|yaml|md|css)\"",
     "prettier:fix": "prettier --write \"**/*.+(js|jsx|ts|tsx|json|yml|yaml|md|css)\"",
     "check-types": "tsc --pretty --noEmit",
     "test-all": "yarn prettier && yarn lint && yarn check-types && yarn build",
     "lint-format-stage": "lint-staged",
-    "analyze": "ANALYZE=true yarn build"
+    "analyze": "ANALYZE=true yarn build",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "@ducanh2912/next-pwa": "^10.2.8",
