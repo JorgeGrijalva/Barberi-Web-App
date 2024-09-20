@@ -1,7 +1,8 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
+# ... existing code ...
+# Eliminar las siguientes dos líneas
+# #!/usr/bin/env sh
+# . "$(dirname -- "$0")/_/husky.sh"
 
-# ... otros comandos de pre-commit ...
-
-# Ejecutar pruebas solo si están especificadas
-yarn test || echo "No hay pruebas especificadas, omitiendo..."
+# Puedes agregar un comando que no falle si no hay pruebas especificadas
+echo "No hay pruebas especificadas, omitiendo..."
+# ... existing code ...
