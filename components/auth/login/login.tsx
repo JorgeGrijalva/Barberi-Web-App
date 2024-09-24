@@ -19,6 +19,7 @@ import useUserStore from "@/global-store/user";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useSyncServer } from "@/hook/use-sync-server";
 import { PhoneInput } from "@/components/ui/phone-input";
+import { ArrowLeftIcon } from "lucide-react";
 import SocialLogin from "../social-login";
 import { AuthScreenProps } from "../types";
 
@@ -80,104 +81,119 @@ const Login = ({ onViewChange, redirectOnSuccess }: AuthScreenProps) => {
   return (
     <div className="flex flex-col gap-6 ">
       <h1 className="font-semibold text-[30px] mb-2 text-start">{t("login")}</h1>
-      <SocialLogin redirectOnSuccess={redirectOnSuccess} />
       {phoneOrEmail === "" && (
-        <div className="flex gap-2 w-full">
-          <Button
-            color="primary"
-            type="button"
-            className="w-full"
-            onClick={() => setPhoneOrEmail("email")}
-          >
-            Sign in with email
-          </Button>
-          <Button
-            color="gray"
-            type="button"
-            className="w-full"
-            onClick={() => setPhoneOrEmail("phone")}
-          >
-            Sign in with phone
-          </Button>
-        </div>
+        <>
+          <SocialLogin redirectOnSuccess={redirectOnSuccess} />
+
+          <div className="flex gap-2 w-full">
+            <Button
+              color="primary"
+              type="button"
+              className="w-full"
+              onClick={() => setPhoneOrEmail("phone")}
+            >
+              Sign in with phone
+            </Button>
+            <Button
+              color="gray"
+              type="button"
+              className="w-full"
+              onClick={() => setPhoneOrEmail("email")}
+            >
+              Sign in with email
+            </Button>
+          </div>
+        </>
       )}
       {phoneOrEmail === "phone" && (
-        <form onSubmit={handleSubmit(handleLogin)}>
-          <div className="flex flex-col gap-3 mb-3 w-full">
-            <PhoneInput
-              {...register("username")}
-              onChange={(e: string) => {
-                console.log(e);
-              }}
-              className="w-full"
-              // defaultCountry="MX"
-            />
-            <Input
-              {...register("password")}
-              error={errors.password?.message}
+        <>
+          <button className="flex items-center gap-1" onClick={() => setPhoneOrEmail("")}>
+            <ArrowLeftIcon className="w-4 h-4" />
+            <span className="font-sm text-sm">{t("back")}</span>
+          </button>
+          <form onSubmit={handleSubmit(handleLogin)}>
+            <div className="flex flex-col gap-3 mb-3 w-full">
+              <PhoneInput
+                {...register("username")}
+                onChange={(e: string) => {
+                  console.log(e);
+                }}
+                className="w-full"
+                // defaultCountry="MX"
+              />
+              <Input
+                {...register("password")}
+                error={errors.password?.message}
+                fullWidth
+                label={t("password")}
+                type="password"
+              />
+            </div>
+            <div className="flex items-center justify-end mb-10">
+              <button
+                type="button"
+                onClick={() => onViewChange("FORGOT_PASSWORD")}
+                className="font-medium text-end"
+              >
+                {t("forgot.password")}
+              </button>
+            </div>
+            <Button
+              type="submit"
+              loading={isSigningIn}
+              disabled={Boolean(queryClient.isMutating())}
               fullWidth
-              label={t("password")}
-              type="password"
-            />
-          </div>
-          <div className="flex items-center justify-end mb-10">
-            <button
-              type="button"
-              onClick={() => onViewChange("FORGOT_PASSWORD")}
-              className="font-medium text-end"
             >
-              {t("forgot.password")}
-            </button>
-          </div>
-          <Button
-            type="submit"
-            loading={isSigningIn}
-            disabled={Boolean(queryClient.isMutating())}
-            fullWidth
-          >
-            {t("sign.in")}
-          </Button>
-        </form>
+              {t("sign.in")}
+            </Button>
+          </form>
+        </>
       )}
 
       {phoneOrEmail === "email" && (
-        <form onSubmit={handleSubmit(handleLogin)}>
-          <div className="flex flex-col gap-3 mb-3 w-full">
-            <div className="flex items-center gap-3">
+        <>
+          <button className="flex items-center gap-1" onClick={() => setPhoneOrEmail("")}>
+            <ArrowLeftIcon className="w-4 h-4" />
+            <span className="font-sm text-sm">{t("back")}</span>
+          </button>
+          <form onSubmit={handleSubmit(handleLogin)}>
+            <div className="flex flex-col gap-3 mb-3 w-full">
+              <div className="flex items-center gap-3">
+                <Input
+                  {...register("username")}
+                  error={errors.username?.message}
+                  fullWidth
+                  label={t("username")}
+                  type="text"
+                />
+              </div>
               <Input
-                {...register("username")}
-                error={errors.username?.message}
+                {...register("password")}
+                error={errors.password?.message}
                 fullWidth
-                label={t("username")}
-                type="text"
+                label={t("password")}
+                type="password"
               />
             </div>
-            <Input
-              {...register("password")}
-              error={errors.password?.message}
+            <div className="flex items-center justify-end mb-10">
+              <button
+                type="button"
+                onClick={() => onViewChange("FORGOT_PASSWORD")}
+                className="font-medium text-end"
+              >
+                {t("forgot.password")}
+              </button>
+            </div>
+            <Button
+              type="submit"
+              loading={isSigningIn}
+              disabled={Boolean(queryClient.isMutating())}
               fullWidth
-              label={t("password")}
-              type="password"
-            />
-          </div>
-          <div className="flex items-center justify-end mb-10">
-            <button
-              type="button"
-              onClick={() => onViewChange("FORGOT_PASSWORD")}
-              className="font-medium text-end"
             >
-              {t("forgot.password")}
-            </button>
-          </div>
-          <Button
-            type="submit"
-            loading={isSigningIn}
-            disabled={Boolean(queryClient.isMutating())}
-            fullWidth
-          >
-            {t("sign.in")}
-          </Button>
-        </form>
+              {t("sign.in")}
+            </Button>
+          </form>
+        </>
       )}
     </div>
   );
