@@ -92,7 +92,7 @@ const Login = ({ onViewChange, redirectOnSuccess }: AuthScreenProps) => {
               className="w-full"
               onClick={() => setPhoneOrEmail("phone")}
             >
-              Sign in with phone
+              {t("sign.in.with.phone")}
             </Button>
             <Button
               color="gray"
@@ -100,7 +100,7 @@ const Login = ({ onViewChange, redirectOnSuccess }: AuthScreenProps) => {
               className="w-full"
               onClick={() => setPhoneOrEmail("email")}
             >
-              Sign in with email
+              {t("sign.in.with.email")}
             </Button>
           </div>
         </>
