@@ -56,10 +56,6 @@ const Login = ({ onViewChange, redirectOnSuccess }: AuthScreenProps) => {
       body.email = data.username;
     } else {
       body.phone = data.username.replace(/[^0-9]/g, "");
-      // add +52 if not +52
-      if (!body.phone.startsWith("+52")) {
-        body.phone = `+52${body.phone}`;
-      }
     }
     signIn(body, {
       onSuccess: (res) => {
