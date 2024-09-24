@@ -6,6 +6,7 @@ export const defaultLocation = envLocation
   : {
       lat: 28.6353,
       lng: 106.0889,
+      distance: 13,
     };
 
 export const activeOrderStatuses = ["new", "accepted", "ready", "on_a_way"];
@@ -24,19 +25,19 @@ export const storyTiming = 10;
 
 export const cardColors = ["#B9CCDF80", "#E3CDE180"];
 
-export const service1 = "#0033FF30";
-export const service2 = "#0033FF30";
-export const service3 = "#0033FF30";
-export const service4 = "#0033FF30";
-export const service5 = "#0033FF30";
+export const service1 = "#FFFFFF";
+export const service2 = "#FFFFFF";
+export const service3 = "#FFFFFF";
+export const service4 = "#FFFFFF";
+export const service5 = "#FFFFFF";
 
-export const service6 = "#0033FF30";
-export const service7 = "#0033FF30";
-export const service8 = "#0033FF30";
-export const service9 = "#0033FF30";
-export const service10 = "#0033FF30";
-export const service11 = "#0033FF30";
-export const service12 = "#0033FF30";
+export const service6 = "#FFFFFF";
+export const service7 = "#FFFFFF";
+export const service8 = "#FFFFFF";
+export const service9 = "#FFFFFF";
+export const service10 = "#FFFFFF";
+export const service11 = "#FFFFFF";
+export const service12 = "#FFFFFF";
 
 export const serviceColors = [
   service1,
