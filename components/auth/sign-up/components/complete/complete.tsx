@@ -76,10 +76,7 @@ const Complete = ({ credential, idToken }: CompleteProps) => {
     }
     if (credential?.includes("@")) {
       authService
-        .signUpComplete({
-          ...body,
-          email,
-        })
+        .signUpComplete(body)
         .then(({ data }) => {
           handleSuccessSignUp(data);
         })
@@ -89,7 +86,10 @@ const Complete = ({ credential, idToken }: CompleteProps) => {
     }
 
     authService
-      .phoneSignUpComplete(body)
+      .phoneSignUpComplete({
+        ...body,
+        email,
+      })
       .then(({ data }) => {
         handleSuccessSignUp(data);
       })
