@@ -53,6 +53,10 @@ const SignUpForm = ({ onChangeView, onSuccess }: SignUpFormProps) => {
         .catch((err) => error(err.message))
         .finally(() => setIsSubmitting(false));
     } else {
+      if (!data.phone?.startsWith("+52")) {
+        error("El número de teléfono debe comenzar con +52");
+        return;
+      }
       phoneNumberSignIn(data.phone ?? "")
         .then((value) => {
           onSuccess({
