@@ -19,7 +19,7 @@ export const authService = {
     fetcher.post<DefaultResponse<any>>("v1/auth/register", { body }),
   signUpVerifyEmail: async (body: { otp: string }) =>
     fetcher<DefaultResponse<any>>(`v1/auth/verify/${body.otp}`),
-  signUpComplete: async (body: SignUpCredentials) =>
+  signUpComplete: async (body: SignUpCredentials & { email: string }) =>
     fetcher.post<DefaultResponse<SignInResponse>>("v1/auth/after-verify", { body }),
   phoneSignUpComplete: async (body: SignUpCredentials) =>
     fetcher.post<DefaultResponse<SignInResponse>>("v1/auth/verify/phone", { body }),

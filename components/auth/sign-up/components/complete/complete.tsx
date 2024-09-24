@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
@@ -48,6 +48,8 @@ const Complete = ({ credential, idToken }: CompleteProps) => {
     resolver: yupResolver(schema),
   });
 
+  const [email, setEmail] = useState("");
+
   const handleSuccessSignUp = (res: SignInResponse) => {
     success("successfully.signed.up");
     setCookie("token", `${res.token_type} ${res.access_token}`);
@@ -74,7 +76,10 @@ const Complete = ({ credential, idToken }: CompleteProps) => {
     }
     if (credential?.includes("@")) {
       authService
-        .signUpComplete(body)
+        .signUpComplete({
+          ...body,
+          email,
+        })
         .then(({ data }) => {
           handleSuccessSignUp(data);
         })
@@ -91,6 +96,13 @@ const Complete = ({ credential, idToken }: CompleteProps) => {
       .catch((err) => error(t(err?.message)))
       .finally(() => setIsSubmitting(false));
   };
+
+  useEffect(() => {
+    if (credential?.includes("@")) {
+      setEmail(credential);
+    }
+  }, [credential]);
+
   return (
     <div className="flex flex-col gap-6  ">
       <h1 className="font-semibold text-[30px] mb-2 text-start">{t("complete.auth")}</h1>
