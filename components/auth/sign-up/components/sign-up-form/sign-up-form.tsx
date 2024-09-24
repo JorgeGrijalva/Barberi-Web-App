@@ -37,6 +37,9 @@ const SignUpForm = ({ onChangeView, onSuccess }: SignUpFormProps) => {
     watch,
   } = useForm<FormData>({
     resolver: yupResolver(schema),
+    defaultValues: {
+      phone: "+52",
+    },
   });
 
   const handleCheckphone = (data: FormData) => {
