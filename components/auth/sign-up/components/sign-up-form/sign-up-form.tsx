@@ -53,8 +53,8 @@ const SignUpForm = ({ onChangeView, onSuccess }: SignUpFormProps) => {
         .catch((err) => error(err.message))
         .finally(() => setIsSubmitting(false));
     } else {
-      if (!data.phone?.startsWith("+52")) {
-        error("El número de teléfono debe comenzar con +52");
+      if (!data.phone?.startsWith("+")) {
+        error("El número de teléfono debe contener la lada");
         return;
       }
       phoneNumberSignIn(data.phone ?? "")
@@ -110,7 +110,7 @@ const SignUpForm = ({ onChangeView, onSuccess }: SignUpFormProps) => {
 
               // setPhoneNumber(e);
             }}
-            defaultCountry="MX"
+            // defaultCountry="MX"
           />
           <div className="flex items-center mt-2.5">
             <input
