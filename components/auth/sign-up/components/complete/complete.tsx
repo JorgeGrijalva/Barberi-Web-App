@@ -141,7 +141,12 @@ const Complete = ({ credential, idToken }: CompleteProps) => {
             error={errors.password_confirmation?.message}
           />
           {!credential?.includes("@") && (
-            <Input fullWidth value={email} onChange={(e) => setEmail(e.target.value)} />
+            <Input
+              fullWidth
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           )}
         </div>
         <Button loading={isSubmitting} fullWidth type="submit" form="complete">
