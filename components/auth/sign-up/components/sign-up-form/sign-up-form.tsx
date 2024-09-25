@@ -60,6 +60,10 @@ const SignUpForm = ({ onChangeView, onSuccess }: SignUpFormProps) => {
         error("El número de teléfono debe contener la lada");
         return;
       }
+      if (data.phone.length < 15) {
+        error("El número de teléfono debe contener la lada");
+        return;
+      }
       phoneNumberSignIn(data.phone ?? "")
         .then((value) => {
           onSuccess({
@@ -101,7 +105,7 @@ const SignUpForm = ({ onChangeView, onSuccess }: SignUpFormProps) => {
             <span className="text-sm text-gray-500">{t("or")}</span>
           </div>
           <label className="text-sm text-gray-500" htmlFor="phone">
-            {t("phone")}
+            {t("phone")} ({t("include.country.code")})
           </label>
           <PhoneInput
             className="text-black"
@@ -113,7 +117,7 @@ const SignUpForm = ({ onChangeView, onSuccess }: SignUpFormProps) => {
 
               // setPhoneNumber(e);
             }}
-            // defaultCountry="MX"
+            placeholder="+52 (Mexico) 614-123-4567"
           />
           <div className="flex items-center mt-2.5">
             <input

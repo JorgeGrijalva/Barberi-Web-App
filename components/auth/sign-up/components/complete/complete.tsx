@@ -80,7 +80,13 @@ const Complete = ({ credential, idToken }: CompleteProps) => {
         .then(({ data }) => {
           handleSuccessSignUp(data);
         })
-        .catch((err) => error(t(err?.message)))
+        .catch((err) => {
+          if (err.response.data.message.includes("email")) {
+            error("email.already.in.use");
+          } else {
+            error("invalid.phone.or.email");
+          }
+        })
         .finally(() => setIsSubmitting(false));
       return;
     }
@@ -145,7 +151,9 @@ const Complete = ({ credential, idToken }: CompleteProps) => {
               fullWidth
               type="email"
               value={email}
+              label={t("email")}
               onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
             />
           )}
         </div>
