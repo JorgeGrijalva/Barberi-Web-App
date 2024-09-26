@@ -176,7 +176,7 @@ const HomePage = async () => {
       <main>
         <section className="my-16">
           <Recommended data={recommendedShops} />
-          <Masters />
+          {/* <Masters /> */}
         </section>
         {!!stories?.length && (
           <section className="my-16 bg-no-repeat bg-cover">
