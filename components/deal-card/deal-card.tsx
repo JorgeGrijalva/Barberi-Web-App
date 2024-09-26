@@ -18,7 +18,7 @@ export const DealCard = ({ data }: DealCardProps) => (
         fill
         className="object-cover"
       />
-      <div className="absolute z-[1] bottom-2 left-2 right-2 text-white flex justify-between rounded-button bg-white/40 backdrop-blur-md h-[30%] p-2.5">
+      <div className="absolute z-[1] bottom-2 left-2 right-2 text-white flex justify-between rounded-button bg-black/20 backdrop-blur-xl h-[30%] p-2.5">
         <div className="w-3/4">
           <strong className="text-lg font-semibold line-clamp-1">{data.translation?.title}</strong>
           <div className="flex items-center gap-1 pt-2">

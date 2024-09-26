@@ -5,7 +5,9 @@ import { CreateShopCredentials, Shop, ShopGallery, ShopTag, ShopFilter } from "@
 
 export const shopService = {
   getAll: (params?: ParamsType) =>
-    fetcher<Paginate<Shop>>(buildUrlQueryParams("v1/rest/shops/paginate", params)),
+    fetcher<Paginate<Shop>>(buildUrlQueryParams("v1/rest/shops/paginate", params), {
+      cache: "no-cache",
+    }),
   create: (data: CreateShopCredentials) => fetcher.post("v1/dashboard/user/shops", { body: data }),
   getById: (id?: number | string, params?: ParamsType) =>
     fetcher<DefaultResponse<Shop>>(buildUrlQueryParams(`v1/rest/shops/${id}`, params), {

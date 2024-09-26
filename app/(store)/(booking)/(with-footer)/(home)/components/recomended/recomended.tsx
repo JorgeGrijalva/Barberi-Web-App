@@ -29,7 +29,7 @@ export const Recommended = ({ data }: RecommendedProps) => {
     () =>
       shopService.getAll({
         lang: language?.locale,
-        perPage: 8,
+        perPage: 4,
         column: "r_avg",
         sort: "desc",
         region_id: country?.region_id || undefined,

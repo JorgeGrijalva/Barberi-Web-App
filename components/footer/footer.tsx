@@ -33,7 +33,13 @@ export const Footer = ({ settings }: FooterProps) => {
             <p className="text-base font-medium">{settings?.description}</p>
           </div>
           <div className="md:flex items-center gap-2.5 hidden mb-8 md:mb-0">
-            <Link href={settings?.customer_app_ios || ""} target="_blank">
+            <Link
+              href={
+                settings?.customer_app_ios ||
+                "https://apps.apple.com/mx/app/b%C3%A1rberi-encuentra-tu-barber%C3%ADa/id6624294280?l=en-GB"
+              }
+              target="_blank"
+            >
               <Image src="/img/apple_store.png" alt="applestore" width={147} height={55} />
             </Link>
 

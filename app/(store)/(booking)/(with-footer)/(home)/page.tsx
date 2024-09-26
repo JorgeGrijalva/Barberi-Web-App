@@ -51,7 +51,7 @@ const NearYou = dynamic(
       <div className="xl:container mt-10">
         <div className="h-6 mb-4 rounded-full w-44 bg-gray-300 mx-4 xl:mx-0" />
         <div className="pr-4 pl-4 xl:pr-0 xl:pl-0 xl:grid flex grid-cols-4 lg:gap-7 sm:gap-4 gap-2.5 animate-pulse overflow-x-hidden flex-nowrap">
-          {Array.from(Array(8).keys()).map((item) => (
+          {Array.from(Array(4).keys()).map((item) => (
             <div
               className="bg-gray-300 rounded-button md:min-w-[312px] min-w-[240px] xl:min-w-full md:h-96 h-80"
               key={item}
@@ -108,7 +108,7 @@ const Recommended = dynamic(
       <div className="xl:container mt-10">
         <div className="h-6 mb-4 rounded-full w-44 bg-gray-300 mx-4 xl:mx-0" />
         <div className="pr-4 pl-4 xl:pr-0 xl:pl-0 xl:grid flex grid-cols-4 lg:gap-7 sm:gap-4 gap-2.5 animate-pulse overflow-x-hidden flex-nowrap">
-          {Array.from(Array(8).keys()).map((item) => (
+          {Array.from(Array(4).keys()).map((item) => (
             <div
               className="bg-gray-300 rounded-button md:min-w-[312px] min-w-[240px] xl:min-w-full md:h-96 h-80"
               key={item}
@@ -135,12 +135,7 @@ const HomePage = async () => {
   // const brands = await brandService.getAll();
   const parsedSettings = parseSettings(settings?.data);
   const recommendedShops = await shopService.getAll({
-    lang,
-    perPage: 8,
-    column: "r_avg",
-    sort: "desc",
-    country_id: countryId,
-    city_id: cityId,
+    perPage: 4,
   });
   const dealShops = await shopService.getAll({
     lang,
@@ -152,7 +147,7 @@ const HomePage = async () => {
   });
   const nearByShops = await shopService.getAll({
     lang,
-    perPage: 8,
+    perPage: 4,
     country_id: countryId,
     city_id: cityId,
   });
@@ -179,12 +174,12 @@ const HomePage = async () => {
         </section>
       </div>
       <main>
-        <section className="mb-16">
+        <section className="my-16">
           <Recommended data={recommendedShops} />
           <Masters />
         </section>
         {!!stories?.length && (
-          <section className="my-10 bg-no-repeat bg-cover">
+          <section className="my-16 bg-no-repeat bg-cover">
             <div className="flex items-center pt-12 pb-9 flex-col">
               <div className="text-4xl font-semibold">
                 <Translate value="stories.widget" />

@@ -31,7 +31,7 @@ export const NearYou = ({ data, lat, lon }: NearYouProps) => {
     () =>
       shopService.getAll({
         lang: language?.locale,
-        perPage: 8,
+        perPage: 4,
         region_id: country?.region_id || undefined,
         country_id: country?.id || undefined,
         city_id: city?.id || undefined,
