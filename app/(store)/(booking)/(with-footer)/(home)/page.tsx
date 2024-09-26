@@ -65,22 +65,22 @@ const NearYou = dynamic(
 const Salons = dynamic(() =>
   import("./components/salons").then((component) => ({ default: component.Salons }))
 );
-const Masters = dynamic(
-  () => import("./components/masters").then((component) => ({ default: component.Masters })),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="xl:container mt-10">
-        <div className="h-6 mb-4 rounded-full w-44 bg-gray-300 mx-4 xl:mx-0" />
-        <div className="pr-4 pl-4 xl:pr-0 xl:pl-0 flex lg:gap-7 sm:gap-4 gap-2.5 animate-pulse overflow-x-hidden flex-nowrap">
-          {Array.from(Array(8).keys()).map((item) => (
-            <div className="bg-gray-300 rounded-button min-w-[200px]  h-99" key={item} />
-          ))}
-        </div>
-      </div>
-    ),
-  }
-);
+// const Masters = dynamic(
+//   () => import("./components/masters").then((component) => ({ default: component.Masters })),
+//   {
+//     ssr: false,
+//     loading: () => (
+//       <div className="xl:container mt-10">
+//         <div className="h-6 mb-4 rounded-full w-44 bg-gray-300 mx-4 xl:mx-0" />
+//         <div className="pr-4 pl-4 xl:pr-0 xl:pl-0 flex lg:gap-7 sm:gap-4 gap-2.5 animate-pulse overflow-x-hidden flex-nowrap">
+//           {Array.from(Array(8).keys()).map((item) => (
+//             <div className="bg-gray-300 rounded-button min-w-[200px]  h-99" key={item} />
+//           ))}
+//         </div>
+//       </div>
+//     ),
+//   }
+// );
 const Services = dynamic(
   () => import("../../components/services").then((component) => ({ default: component.Services })),
   {

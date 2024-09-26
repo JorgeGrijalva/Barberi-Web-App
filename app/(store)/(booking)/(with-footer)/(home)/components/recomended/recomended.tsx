@@ -87,7 +87,7 @@ export const Recommended = ({ data }: RecommendedProps) => {
           }}
         >
           {shopList?.map((shop) => (
-            <SwiperSlide key={shop.id}>
+            <SwiperSlide className="h-full" key={shop.id}>
               <ShopCard data={shop} />
             </SwiperSlide>
           ))}
