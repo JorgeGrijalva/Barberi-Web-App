@@ -220,13 +220,21 @@ export const Footer = ({ settings }: FooterProps) => {
         </div>
         <div className="grid grid-cols-2 items-center gap-6 md:hidden mt-10 w-full">
           <div className="md:h-16 h-12 relative flex items-start">
-            <Image
-              src="/img/apple_store.png"
-              alt="applestore"
-              layout="fill"
-              objectFit="contain"
-              style={{ objectPosition: "left" }}
-            />
+            <Link
+              href={
+                settings?.customer_app_ios ||
+                "https://apps.apple.com/mx/app/b%C3%A1rberi-encuentra-tu-barber%C3%ADa/id6624294280?l=en-GB"
+              }
+              target="_blank"
+            >
+              <Image
+                src="/img/apple_store.png"
+                alt="applestore"
+                layout="fill"
+                objectFit="contain"
+                style={{ objectPosition: "left" }}
+              />
+            </Link>
           </div>
           <div className="md:h-16 h-12 relative">
             <Image
