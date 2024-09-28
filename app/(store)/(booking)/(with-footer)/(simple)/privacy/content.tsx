@@ -22,7 +22,7 @@ export const PrivacyContent = ({ data }: PrivacyContentProps) => {
     <div className="xl:container px-4 py-7">
       <h1 className="md:text-head text-xl font-semibold">{privacy?.data?.translation?.title}</h1>
       <div
-        className="mt-4"
+        className="mt-4 prose prose-sm sm:prose lg:prose-lg xl:prose-xl" // Añadir clases de Tailwind Typography
         dangerouslySetInnerHTML={{ __html: privacy?.data?.translation?.description || "" }}
       />
     </div>

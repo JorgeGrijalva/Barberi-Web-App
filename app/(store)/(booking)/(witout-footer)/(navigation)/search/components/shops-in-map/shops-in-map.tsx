@@ -58,7 +58,7 @@ export const ShopsInMap = () => {
               lng: Number(settings?.longitude),
             }
       }
-      zoom={urlSearchParams?.has("distance") ? Number(urlSearchParams.get("distance")) : undefined}
+      zoom={12}
       options={{
         mapTypeControl: false,
         fullscreenControl: false,

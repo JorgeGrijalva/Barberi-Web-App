@@ -131,5 +131,6 @@ module.exports = {
     },
   },
   darkMode: ["class"],
-  plugins: [],
+  // eslint-disable-next-line global-require
+  plugins: [require("@tailwindcss/typography")],
 };
